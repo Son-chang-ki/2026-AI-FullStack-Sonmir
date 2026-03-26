@@ -8,10 +8,8 @@ JAVA_HOME  :  C:\Program Files\Java\jdk-21.0.10
 
 path       :  %JAVA_HOME%\bin
 
-
-
-
-
 4) java 확인
-
+  CMD
+   java -version
+   
 2. eclipse 설치 
