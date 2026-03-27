@@ -7,6 +7,7 @@ day002
   - TODO1 : GITHUB - PULL
 
    1. git pull origin main 
+   2. markdawn
 
 
   ## Part002
