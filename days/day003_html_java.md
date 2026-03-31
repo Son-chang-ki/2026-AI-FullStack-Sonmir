@@ -29,7 +29,7 @@ System.out.println(a + "+" + b + "=" + (a+b));
 System.out.printf(%d + %d = %d, a,b,a+b);
 
 ---
-### #2. Todo1 : html 기본태크
+## #2. Todo1 : html 기본태크
 - 1. html / css/ js 역할
  - 1) html : 구조
  - 2) css : 꾸미기
@@ -48,12 +48,11 @@ System.out.printf(%d + %d = %d, a,b,a+b);
  4. 태그
   - 영역(div)잡고 제목(h) 내용(p) 
 
-
 ---
 ### #3. Todo2 : java 자료형/ 입력
 
  1. 자료형의 구분
-  - 기본형 : 실제값 저장 (1: int)
+  - 기본형 : 실제값 저장 (1: int) - 논리형, 정수형, 실수형 
   - 참조형 : 주소값 저장 ("abc" : string)
 
  2. 기본자료형

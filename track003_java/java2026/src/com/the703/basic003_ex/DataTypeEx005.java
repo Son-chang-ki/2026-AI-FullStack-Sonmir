@@ -18,7 +18,7 @@ public class DataTypeEx005 {
 		// 처리 A = B
 	    tot = kor + eng + math;
 	    ave = tot/3f;  // 정수 / 정수
-	    ave = tot/3.0;  // 정수 / 정수
+	    ave = tot/3.0;  // 정수 / 실수
 	    // 출력
 	    System.out.println();
 		System.out.println("총점 : " + tot + "\n 평균 : " + ave) ;
