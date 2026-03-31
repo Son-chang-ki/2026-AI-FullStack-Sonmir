@@ -9,21 +9,31 @@ public class CastingEx002 {
 		 int kor, eng, mat, total, level;
 	     double avg;
 	     Scanner scanner = new Scanner(System.in);
+	     
 		// 입력
 	    System.out.println("국어점수 입력 >"); 	    kor = scanner.nextInt();
 	    System.out.println("영어점수 입력 >"); 	    eng = scanner.nextInt();
 	    System.out.println("수학점수 입력 >"); 	    mat = scanner.nextInt();
+	    
 		// 처리
-	    total = (kor + eng + mat);
-	    avg = total/3.0;  // avg = 99.666666666667 => (int) avg => 9
-	    level = (int)avg/10;
+	    total = kor + eng + mat;
+	    avg = total/3.0;  // 정수 / 실수(double)   avg = 99.666666666667 => (int) avg => 9
+	    avg = total/3f;  // 정수 / 실수(float) avg = 99.666666666667 => (int) avg => 9
+	    avg = (double)total/3;  // 실수(double) / 정수 avg = 99.666666666667 => (int) avg => 9
+	    level = (int)(avg/10);
+	    
 		// 출력
 	    System.out.println();
-	    System.out.println("::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::");
-	    System.out.println("::::       GOOD    IT   SCORE       ::::");
-	    System.out.println("::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::");
-	    System.out.println("국어" + "\t" + "영어" + "\t" + "수학" + "\t" + "총점" + "\t" +"평균" + "\t" + "레벨");
-	    System.out.println(kor + "\t" + eng + "\t" + mat + "\t" + total + "\t" + avg + "\t" + level);
+	    System.out.println("::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::\n"
+	    		+ "::::       GOOD    IT   SCORE       ::::\n"
+	    		+ "::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::\n"
+	    		+ "국어" + "\t" + "영어" + "\t" + "수학" + "\t" + "총점" + "\t" +"평균" + "\t" + "레벨 \n"
+	    		+ kor + "\t" + eng + "\t" + mat + "\t" + total + "\t" + String.format("%.2f", avg) + "\t" + level);
+	    //System.out.println("::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::");
+	    //System.out.println("::::       GOOD    IT   SCORE       ::::");
+	    //System.out.println("::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::");
+	    //System.out.println("국어" + "\t" + "영어" + "\t" + "수학" + "\t" + "총점" + "\t" +"평균" + "\t" + "레벨");
+	    //System.out.println(kor + "\t" + eng + "\t" + mat + "\t" + total + "\t" + avg + "\t" + level);
 	    System.out.printf("%d\t %d\t %d\t %d\t %.2f\t %d", kor,eng,mat,total,avg,level);
 	}
 

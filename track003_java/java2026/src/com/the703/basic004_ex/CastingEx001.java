@@ -17,12 +17,13 @@ public class CastingEx001 {
 		  num2 = scanner.nextInt();
 		// 처리
 		//  10 (정수)/ 3.0 (실수), 10.0 (실수)/ 3 (정수)
-		//double result = (num1 + "/" + (float)num2);
+		//result = (num1 / num2);
 		  result = (num1 / (float)num2);
-	    // 출력
-		// 10 / 3 = 3.33
-  
+		  result = (num1 / (double)num2);
+		  
+	    // 출력  		// 10 / 3 = 3.33
 		  System.out.println("결과는: " + result);
+		  System.out.printf("%d / %d = %.2f", num1, num2, result);
 	}
 
 }
