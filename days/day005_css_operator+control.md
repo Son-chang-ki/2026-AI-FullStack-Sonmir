@@ -1,3 +1,7 @@
+Todo1: css(2) 내부적용 / id vs class
+Todo2: java 연산자/제어문
+---
+
 ### #1. 복습문제
 - 1. css(1)
  - 1) 배경 : background
@@ -69,7 +73,7 @@
 
  ---
  ### #3. Todo2 : java 자료형2
-
+   1. 연산자
 
 
 
@@ -79,7 +83,7 @@
 1. 배경을 파란색으로 설정하는 속성은?       background-color : blue
 2. 글자색상을 빨간색으로 지정하는 속성은?   color: red
 3. 글자 크기를 20px로 지정하는 속성은?     font-size: 20px
-4. 글자를 가운데 정렬하는 속성은?          text-align
+4. 글자를 가운데 정렬하는 속성은?          text-align: center
 5. 글자에 밑줄을 추가하는 속성은?          text-decoration
 6. 글꼴을 Arial로 지정하는 속성은?         font-family
 7. 글자를 굵게 표시하는 속성은?            font-weight

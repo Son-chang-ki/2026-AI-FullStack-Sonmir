@@ -1,3 +1,7 @@
+Todo1: CSS기본
+Todo2: java 자료형2/연산자/제어문?
+---
+
 ### #1. 복습문제
 - 1. html/css/js 역할
   - 1) html :  구조
