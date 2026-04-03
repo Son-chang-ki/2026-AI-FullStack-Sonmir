@@ -1,7 +1,9 @@
 Todo1: css(2) 내부적용 / id vs class
 Todo2: java 제어문 - IF
-
 ---
+
+### #1. 복습문제
+
 1. 배경을 파란색으로 설정하는 속성은?       background-color : blue
 2. 글자색상을 빨간색으로 지정하는 속성은?   color: red
 3. 글자 크기를 20px로 지정하는 속성은?     font-size: 20px
@@ -37,6 +39,19 @@ q1-2 char형 변수 ch가 'a' 또는 'A'일때   true인 조건식    ==> (ch ==
 q1-3 char형 변수 ch가 숫자('0'~'9')일때   true인 조건식     ==> (ch >= '0' && ch <= '9')
 q1-4 char형 변수 ch가 영문자(대문자 또는 소문자) 일때   true인 조건식  
   ==> (ch >= 'A' && ch <= 'Z' || ch >= 'a' && ch <= 'z')
+---
+### ■2. Todo1: CSS기본
+    - css(2) 내부적용 / id vs class css 적용방법
+
+      1) 인라인 스타일 - 태그안에 직접 적용
+         <p style="color:red" >color</p>
+
+      2) 내부 스타일 시트 - head 안에 style을 사용해 작성
+         <style> p{  color:red;  }  </style>
+
+      3) 외부 스타일 시트
+
+---
 
 
 ### ■3. Todo2: java control - IF
