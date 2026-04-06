@@ -37,3 +37,5 @@ System.out.println(num == 1 ?  "1이면 1이다" : (num == 2) ? "2이면 2이다
 
 천천히 움직이는 장면전환효과를 주는 속성은? transition : all 2s
 
+---
+
