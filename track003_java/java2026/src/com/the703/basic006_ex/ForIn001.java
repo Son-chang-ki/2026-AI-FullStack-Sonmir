@@ -43,7 +43,7 @@ public class ForIn001 {
 		System.out.println("===================================================================================");
 		System.out.printf("%s\t"+"%d\t"+"%d\t"+"%d\t"+"%d\t"+"%.2f\t"+"%s\t"+"%s\t"+"%s\n",
                 std, kor, eng, math, tot, avg, pass, level, best);
-	}
+	} 
 
 }
 /*성적처리 프로그램입니다.
