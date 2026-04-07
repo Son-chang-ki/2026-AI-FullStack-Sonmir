@@ -2,21 +2,25 @@ package com.the703.basic006_ex;
 
 import java.util.Scanner;
 
-public class ForIn001 {
+public class ForIn001_1 {
 
 	public static void main(String[] args) {
 		// 변수 입력 처리 출력
-
-		int kor = -1, math = -1, eng = -1, tot = 0;
-		double avg =0.2f; String std="", pass="", best="", level ="";
+		// 자료형 : 기본형 /참조형 (String)
+		// 기본형 - 정수 : byte(1)<short(2)/char(2)<int★(4) <long(8)  // 실수 : flaot(4)<bouble★(8)
+		// boolean 빼고 타입형변환가능
+		int kor = -1, math = -1, eng = -1, tot = -1; /* 1) 0~100 사이의 아닌 값  */
+		double avg = -1; String std="", pass="불합격", best="", level ="가";
 		
 		Scanner scanner = new Scanner(System.in);
-		
+		// 입력   0. 국어,영어, 수학(0~100만입력받기)  
+		//          문자열: next() / 정수형(10) : nextInt() / 실수형(1.23) : nextDouble()
+		                        // 문자 : next().charAt(0)
 		System.out.println("학번 입력 >"); std = scanner.next();
-		System.out.println("국어점수 입력 >"); //for(초기값 ; 조건; 증감)
-		kor = scanner.nextInt();
-		  for(; kor<0 || kor>100; ) {
-		     if (kor < 0) {System.out.println("국어점수 입력 >");  break;}
+		
+		for(; ; ) { //for(초기값 ; 조건; 증감)
+		    System.out.println("국어점수 입력 >"); kor = scanner.nextInt();
+		     if (kor >= 0 && kor <= 100) { break;}
 			   // 1. 국어점수 입력 >100 입력받기  2. 건너뛰기(continue)
 		  }
 		  
@@ -31,11 +35,23 @@ public class ForIn001 {
 		  for(; eng<0 && eng>100; ) { 
 	         if (eng < 0) {System.out.println("영어점수 입력 >"); break; }
 		}
-		tot = kor + math + eng;
-		avg = tot/3.0f;
+		// 처리 - 연산자 먼저 () 값(++,--,산술)  비교(<,>)  조건(&& || 삼항)  대입(=)
+		//     - 제어문 (# if/ # switch)    반복(#for / whith / do while)
+		tot = kor + math + eng;  //1. 총점 구하기
+		avg = tot/3.0f;          //2. 평균 구하기 (강제형변화) 정수/실수
+		// 3. 평균이 60점이상이고  각과목이 40점 미만이면 아니라면 합격/ 아니면 불합격
 		
 		if ( avg >= 60 && kor >= 40 && math >= 40 && eng >=40 ) {pass = "합격" ;}
-		if (avg >= 95) { best = "장학생" ;}
+		// pass = avg < 60 ? "불합격" : kor < 40 || eng < 40 || math < 40 ? "불합격" : "합격";
+		if (avg >= 95) { best = "장학생" ;} // 4. 평균이 95점이상이면 장학생 
+		
+		switch ((int)avg/10) { //95-> 9 수
+		    case 10 : case 9: level="수"; break;
+		    case 8 :  level="우"; break;
+		    case 7 :  level="미"; break;
+		    case 6 :  level="양"; break;
+		
+		}
 		// 삼항연산자          조건    ?   참   :  거짓
 		level = avg >= 90 ? "수" : avg >= 80 ? "우" : avg >= 70 ? "미" : avg >= 0 ? "양" :  "가" ;
 		
