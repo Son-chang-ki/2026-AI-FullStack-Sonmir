@@ -1,4 +1,4 @@
-package com.the703.basic006;
+package com.the703.basic006_ex;
 
 public class RepeatEx001 {
 

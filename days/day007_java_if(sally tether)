@@ -73,29 +73,16 @@ else if(num==3){  System.out.println("3이다");}
 css 적용방법
 1) 인라인 스타일   - 태그안에 직접 적용  
 
-```html
+html
 <p style="color:red" >color</p>
-```
+
 
 2) 내부 스타일 시트 - head 안에 style을 사용해 작성
-```html
+html
 <style> p{  color:red;  }  </style>
-```
 
 
 3) 외부 스타일 시트
-
-■ 자기소개페이지
-
-| 이름 | 특징 | 링크 |
-|------|------|------|
-| **최지은 포트폴리오** | 감성적인 타이포그래피, 부드러운 인터랙션, 섹션별 명확한 구성 | [jieun-portfolio.vercel.app](https://jieun-portfolio.vercel.app) |
-| **이정민 포트폴리오** | 미니멀한 UI, 섹션별 애니메이션 효과 | [leejeongmin.vercel.app](https://leejeongmin.vercel.app) |
-| **박세빈 포트폴리오** | 감성적인 컬러와 인터랙션, 프로젝트 중심 구성 | [savinpark.github.io/portfolio](https://savinpark.github.io/portfolio) |
-| **강모대 포트폴리오** | Azure 기반 배포, 깔끔한 구성 | [onlyone-modaekang.azurewebsites.net](https://onlyone-modaekang.azurewebsites.net) |
-| **이보아 포트폴리오** | 디자이너 감성의 레이아웃, 섬세한 타이포그래피 | [leeboa.com](http://leeboa.com) |
-
-
 
 ---
 
@@ -111,8 +98,6 @@ css 적용방법
   조건문 : if, switch
   반복문 : for, while, do while
   제어키워드 : break, continue
-
-
 
 ---
 
