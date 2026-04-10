@@ -62,7 +62,7 @@
 
 ■ 1. html + css
 
-    1. 레이아웃잡는방법은? (   float  ,   position  ,        ,      )
+    1. 레이아웃잡는방법은? (   float  ,   position  ,   display   )
     2. box를 왼쪽, 오른쪽에 붙이는 방법은?  float
     3. 다음박스를 왼쪽 오른쪽에 배치하려고 한다. 들어가야하는 코드는?  .box { float-left;}
     <style>
@@ -104,7 +104,4 @@
     
 3. for, while, do while 버젼으로  문제를 풀으시오!  
      1  2  3  4  5
-
-
-
 

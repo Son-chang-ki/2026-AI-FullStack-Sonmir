@@ -21,9 +21,9 @@ public class Day011 {
 		else if ( ch =='c' )  { System.out.println("coconut");   }
 		// 삼항연산자 == ? 참 : 거짓
 		//4. 삼항연산자 조건 ? 참 : 거짓 |  
-		 System.out.println ( ch == 'a' ?  "apple" 
-				 : ch == 'b' ?  "banana" 
-			     : ch == 'c' ? "coconut" : "") ;
+		// System.out.println ( ch == 'a' ?  "apple" 
+		//		 : ch == 'b' ?  "banana" 
+		//	     : ch == 'c' ? "coconut" : "") ;
 
 
 		System.out.println();
@@ -35,15 +35,17 @@ public class Day011 {
 		}
 		// for (초기값, 조건, 증감)  {변수 }   {  변화 }
 		for (int i =1; i <= 5; i++ )  
-		     { System.out.println(i); }
-		  	
+		     { System.out.print(i + "\t") ; }
+		
+		System.out.println();
 		int i2 =1 ;
 		while ( i2 <= 5 )  
-	     { System.out.println(i2);   i2++  ; }
+	     { System.out.print(i2 + "\t");   i2++  ; }
 		
+		System.out.println();
 		int i1 =1;
 		do
-		{ System.out.println(i1);   i1++  ; }     while ( i1 <= 5 ) ;
+		{ System.out.print(i1 + "\t");   i1++  ; }     while ( i1 <= 5 ) ;
 				
 	}
 
