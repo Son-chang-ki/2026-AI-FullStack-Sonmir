@@ -1,4 +1,4 @@
-package com.company.java007_ex;
+package com.the703.basic007_ex;
 
 public class ArrayNewEx001 {
 
