@@ -5,10 +5,22 @@ public class Forfor_ex0410 {
 	public static void main(String[] args) {
 		// 변수 입력 처리 출력
 		// ver-1 보이는 그대로 출력
+		System.out.println(1 + "층");
+		System.out.println(1);   System.out.println(2);  System.out.println(3);  System.out.println();
 		
+		System.out.println(2 + "층");
+		System.out.println(1);   System.out.println(2);  System.out.println(3);  System.out.println();
 		
-		// ver-2 칸 줄이기
+		System.out.println(3 + "층");
+		System.out.println(1);   System.out.println(2);  System.out.println(3);  System.out.println();
 		
+		System.out.println(4 + "층");
+		System.out.println(1);   System.out.println(2);  System.out.println(3);  System.out.println();
+		
+		// ver-2 칸 줄이기  for 정리 {영역}  {변수 } for( 시작; 종료; 변화)
+		System.out.println();
+		System.out.println(1 + "층");
+		for(int kan=1; kan<=4; kan++)  {System.out.println(kan);}   System.out.println();
 		
 		// ver-3 층 줄이기
 
