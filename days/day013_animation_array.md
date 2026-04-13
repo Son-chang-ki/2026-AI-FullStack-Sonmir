@@ -59,6 +59,7 @@ int day = scanner.nextInt();
 1234
 1234
 1234
+
 ---
 
 ■ 2. Todo1: CSS기본
@@ -70,3 +71,5 @@ int day = scanner.nextInt();
 ---
 
 ■ 4. 복습문제
+
+
