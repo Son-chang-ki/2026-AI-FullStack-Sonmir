@@ -20,10 +20,12 @@ public class ArrlEx004 {
 		//	int data = 'B';
 		//	ch1 [0] = data; data='b';   ch1[1] = data; data='A';   ch1[2] = data; data='N';  ch1[3] = data; data='A'; 
 		//  ch1 [4] = data; data='N';   ch1[5] = data; data='A'; 
-		if (ch[0] != 'B' ) { System.out.println(ch[0]) ; } 
-		else if (ch[1] != 'a' )   { System.out.println(ch[1]) ; }
-		
-
+		//if (ch1[0] != 'B' ) { System.out.println(ch1[0]) ; } 
+		//else if (ch1[1] != 'a' )   { System.out.println(ch1[1]) ; }
+		   for (int i =0; i<6; i++)
+		              {         if (ch1[i] != 'B' ) { System.out.println(ch1[i]) ; } 
+		                        else if (ch1[i] != 'a' )   { System.out.println(ch1[i]) ; }          }
+		   
 	}
 
 }

@@ -4,6 +4,9 @@ public class ArrayEx001 {
 
 	public static void main(String[] args) {
 		// 변수 입력 처리 출력
+		// 배열
+		// [같은타입]의 데이터 [연속된 공간에] 저장하는 자료구조
+		// arr(1000번지) = 1000번지{1,2,3} ★만드는거와 동시에 값넣기
 		double [] arr  = {1.1  , 1.2  , 1.3  , 1.4  , 1.5}; // 갯수 5, 0~4
 		
 		   System.out.print(arr[0] + "\t");

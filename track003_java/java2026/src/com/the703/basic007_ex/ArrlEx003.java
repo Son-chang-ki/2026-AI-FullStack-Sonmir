@@ -8,10 +8,11 @@ public class ArrlEx003 {
 		int coun1 = 0, coun2 = 0 ;
 		//3. for + length 대입
 		// ver-1  ('a' ~ 'z' 사이 모음 갯수는?)  { 소문자 모음 카운트 }  else if ('A' ~ 'Z' 사이 모음 갯수는?)  { 대문자 모음 카운트 }  
-		//arr2[0] = 0;   arr2[1] = 10;   arr2[2] = 20;
+		//ch[0] = 'a';   ch[1] = 'e';   ch[2] = 'i';  ch[3] = 'o';  ch[4] = 'u';  ch[5] = 'A';   ch[6] = 'E';
+		
 		// ver-2
 		//	int data = 0;
-		//	arr2[0] = data; data+=0.1;   arr2[1] = data; data+=10;   arr2[2] = data; data+=10;
+		//	ch1[0] = data; data+=0.1;   arr2[1] = data; data+=10;   arr2[2] = data; data+=10;
 		//if (ch[0] >= 'A' && ch[0] <= 'Z') { count1++ ; } else if (ch[0] >= 'a' && ch[0] <= 'z')   { count2++ ;}
 		//if (ch[1] >= 'A' && ch[1] <= 'Z') { count1++ ; } else if (ch[1] >= 'a' && ch[1] <= 'z')   { count2++ ;}
 
