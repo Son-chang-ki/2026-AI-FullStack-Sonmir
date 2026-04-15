@@ -9,16 +9,21 @@ public class IF_test_0414_2 {
 		   System.out.println('★');
 		   System.out.print('★'); System.out.print('★'); System.out.println();
 		   System.out.print('★'); System.out.print('★'); System.out.print('★');  System.out.println();
+		   
 		// ver2 층 정리 
- 
-		    System.out.println();
-		    for(int a = 1; a <= 1; a++)     { System.out.print('★') ; }   System.out.println();
-		    for(int a = 1; a <= 2; a++)     { System.out.print('★') ; }   System.out.println();
-		    for(int a = 1; a <= 3; a++)     { System.out.print('★') ; }   System.out.println();
+		   System.out.println();
+		   for(int a = 1; a <= 1; a++)     { System.out.print('★') ; }   System.out.println();
+		   for(int a = 1; a <= 2; a++)     { System.out.print('★') ; }   System.out.println();
+		   for(int a = 1; a <= 3; a++)     { System.out.print('★') ; }   System.out.println();
+		    
 		// ver3 칸 정리     
-		        System.out.println();
-		        for(int i=1; i <=3; i++ )        
-		        {   for(int a = 1; a <= i; a++)     { System.out.print('★') ; }   System.out.println();   }
+		System.out.println();
+		for (int i = 1; i <= 3; i++) {
+			for (int a = 1; a <= i; a++) {
+				System.out.print('★');
+			}
+			System.out.println();
+		}
 	}
 
 }
