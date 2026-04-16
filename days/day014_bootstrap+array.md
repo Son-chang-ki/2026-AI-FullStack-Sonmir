@@ -139,9 +139,6 @@ int[] aver=new int[5];
   1. 부트스트랩이 들어간 html 페이지 만들기 (boot) bootstrap004_self.html
   2. div 6개 들어간 영역나누기
 
-
-
-
   ---
 
   ###  ■3. Todo2 : java Array

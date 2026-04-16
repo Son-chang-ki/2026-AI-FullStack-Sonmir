@@ -44,10 +44,13 @@ int day = scanner.nextInt();
 ---
 
   ■2. Todo1: CSS - bootstrap
-animation
+    1. 부트스트랩이 들어간 html 페이지 만들기 (boot)  bootstrap004_self.html
+   2. div 6개가 들어간 영역나누기  
+
 
   ■3. Todo2: java Array
-패키지명 : com.the703.basic008_ex 클래스명 : Array1Total 배열을 이용하여 다음의 프로그램을 작성하시오.
+패키지명 : com.the703.basic008_ex 
+클래스명 : Array1Total 배열을 이용하여 다음의 프로그램을 작성하시오.
 
 String[] name={"아이언맨","헐크","캡틴","토르","호크아이"};
 int[] kor={100,20,90,70,35};   
@@ -148,4 +151,23 @@ int[] aver=new int[5];
 
 
 
-  
+  ---
+
+
+  ### ■4.  복습문제
+■1. html + css + bootstrap
+1. 부트스트랩에 해당하는 class와 문제를 풀으시오.
+
+<li class="btn btn-danger">열정</li>
+
+- 버튼 스타일을 적용하는 기본 클래스  ==> btn
+- 버튼 배경색을 빨간색으로 지정   ==> btn-danger
+ 
+
+■2. java (5분)
+
+1. new 연산자 이용하여 다차원배열만들기
+2. for + length 이용해서 대입   
+3. for + length 이용해서 출력 
+   101   102   103
+   104   105   106  

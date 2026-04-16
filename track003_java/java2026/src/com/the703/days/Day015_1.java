@@ -11,18 +11,17 @@ public class Day015_1 {
 		
 		// 칸 줄이기
 		System.out.println();
-		 for(int a = 3; a >= 3; a--)     { System.out.print('★') ; }   System.out.println();
-		 for(int a = 3; a >= 2; a--)     { System.out.print('★') ; }   System.out.println();
-		 for(int a = 3; a >= 1; a--)     { System.out.print('★') ; }   System.out.println();
+		 for(int a = 1; a <= 3; a++)     { System.out.print('★') ; }   System.out.println();
+		 for(int a = 1; a <= 2; a++)     { System.out.print('★') ; }   System.out.println();
+		 for(int a = 1; a <= 1; a++)     { System.out.print('★') ; }   System.out.println();
 
 		// ver3 칸 정리     
 		System.out.println();
-		  for (int i = 3; i <= 1; i--) {
-			for (int a = 3; a <= i; a--) {
+		  for (int i = 3; i >= 1; i--) {
+			for (int a = 1; a <= i; a++) {
 				System.out.print('★');
 			}
 			System.out.println();
-
 	}
 
 	}
