@@ -14,11 +14,24 @@ public class MethodEx004 {
 	public static String process_scholar(float avg )  { 
 		if (avg >= 95) { return "장학생";}    else {return "---"; } }
 	
+	public static String process_star(float avg)  
+	  { //return avg<=70? "*******" : avg>=80? "********" : avg>=90? "*********" : avg ==100? "**********" : "" ;
+	      //ver-1 평균점수대로 별표 붙이기 , 예) 70점대이면 별7개, 80점대이면 별8개, 90점대이면 별9개 , 100점이면 별10개
+	      //ver-2 70점대이면 별7개   70/10     83/10  해당 점수만큼 별 출력
+	      String re ="";
+	      for(int i= 0; i<(int)(avg/10); i++){re += "*";}
+	      return re;
+	   }
 	
-	public static String process_show 
+	public static void process_show 
 	     (String name, int kor, int eng, int math, int total, float avg, String pass, String jang, String star)
-	     { return show;
-		
+	     { 
+		   System.out.printf
+	        ( ":::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::\n"
+	    	+  "이름\t국어\t영어\t수학\t총점\t평균\t 합격여부\t  장학생\t  랭킹\n"
+	    	+  "--------------------------------------------------------------------------------------\n"
+	    	+ "%s\t %d\t %d\t %d\t %d\t %.1f\t %s\t %s\t %s\t" , name, kor, eng, math, total, avg, pass, jang, star  +"\n"
+	    	+  "--------------------------------------------------------------------------------------");
 	     }
 	public static void main(String[] args) {
 	//(1)  변수
@@ -52,20 +65,20 @@ public class MethodEx004 {
 	// public static String process_scholar(float avg) { 
 	//   if (avg >= 95) { return jang ;}   else  {return "---" }  ;}
     // 5. 평균점수대로 별표 붙이기 , 예) 70점대이면 별7개, 80점대이면 별8개, 90점대이면 별9개 , 100점이면 별10개 
-//		star = process_star(avg);  
-	// public static string process_star(float avg) 
-	//  { if (int a
-	//    }
-//		/////////////////////(4) 출력
-		process_show(name, kor, eng, math, total, avg, pass, jang, star);
-	   // public static string process_show
-	   //  (String name, int kor, int eng, int math, int total, float avg, String pass, String jang, String star) 
-	   //  { return show; }
+	star = process_star(avg);  
+	// public static String process_star(float avg) 
+	//  { if (avg <= 70) { return "*******" ; }
+	//     else if (avg >= 80) { return "********" ; }
+    //     else if (avg >= 90) { return "*********" ; }
+    //     else if (avg == 100) { return "**********" ; }
+	//   }
+	
+	//(4) 출력
+	process_show(name, kor, eng, math, total, avg, pass, jang, star);
 
+	} // end main
 
-	}
-
-}
+}// end class
 /* public static void main(String[] args) {
 /////////////////////(1)  변수
 String name  = ""; 

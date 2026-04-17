@@ -2,9 +2,9 @@ package com.the703.basic009_ex;
 
 public class MethodEx003 {
 	
-	//public static int num() { return 1; }
+	
 	public static int return_num() { return 1; }
-//	public static double float(int a, double b) { return a/b
+    //public static double float(int a, double b) { return a/b
 	public static double return_float() { return 3.3333; }
 	public static String mycolor() { return "PURPLE" ;}
 	public static String jangsu() { return "★★★★★" ; }
@@ -15,7 +15,9 @@ public class MethodEx003 {
 		if (c=='a') {r= "노랑조";}  
 		return "나는" + r;  //A이면 노랑조 ,  B이면 주황조
 	    }
-	public static String stdId(int a) { return "G" +a; }
+	// if (ban =='A'){ return "노랑조";} else if (ban =='B'){ return "주황조";} else { return "" ; }
+	// public static String myban( char c) { return c=='A' ? "노랑조" : c=='B' ? "주황조" : "" ; }
+	public static String stdId(int a) { return "G" + a; }
 	public static char stdAvg(int a) { 
 		 if(a >= 90) { return 'A';}
 	     else if ( a >= 80) { return 'B' ;}
@@ -26,24 +28,25 @@ public class MethodEx003 {
 	public static void main(String[] args) {
 		// public static 리턴값 메서드명(파라미터) { 해야할일 }
 		System.out.println("1. 내가 좋아하는 숫자    :" + return_num());    // 1을 결과값으로 줌
-		
+		//public static int num() { return 1; }
 		System.out.println("2. 10/3.0을 실수로 표현 :" + return_float());  // 3.3333을 결과값으로 줌
 		// public static double return_float() { return 3.3333; }
-		
 		System.out.println("3. BEST COLOR        :" + mycolor());      // PURPLE을 결과값으로 줌
 		// public static String mycolor() { return PURPLE ;}
-		
 		System.out.println("4. 장수돌침대 별이       :" + jangsu());        // ★★★★★을 결과값으로 줌  
-		// public static char jangsu() { return "★★★★★"; }
-		
+		// public static String jangsu() { return "★★★★★"; }
 		System.out.println("5. 10+20= " + myadd(10,20));       // 두숫자를 더한값을 결과값으로 줌  
 		// public static int myadd(int a, int b) { return a+b; }
 		System.out.println("6. 반(노랑조/주황조)=" + myban('B'));  // A이면 노랑조 ,  B이면 주황조
-		// public static char myban('B') { return }
+		// public static String myban('B') { return }
 		System.out.println("7. 당신의 학번은?" + stdId(1111));   // G하고 넣어준 학번 나오게
 		// public static String stdId(1111) { return G  }
 		System.out.println("8. 당신의 평균은?" + stdAvg(88));    // 90점이상이면 A ,  80점이상이면 B ,  70점이상이면 C , 아니라면  D
-	}    // public static char stdAvg(int a) { if(a>=90) { return A },  else if a>80){ return B },  70점이상이면 C , 아니라면  D }
+	}    // public static char stdAvg(int a) 
+	     //  { if(a>=90) { return 'A'; },  else if (a>=80){ return 'B'; },  else if (a>70) { return 'C'; } , 
+	     //   else  { return 'D' ;} }
+  	     //public static char stdAvg(int a) 
+	     // { return avg<70? 'D' : avg<80? 'C' : avg<90? 'B' : avg <=100? 'A' : ' ' ; }
 
 }
 /*

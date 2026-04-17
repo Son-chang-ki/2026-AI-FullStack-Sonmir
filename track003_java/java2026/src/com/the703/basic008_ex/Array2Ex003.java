@@ -17,8 +17,9 @@ public class Array2Ex003 {
 			for(int ch1=0; ch1<arr1.length; ch1++) {
 			   for (int kan=0; kan<arr1[ch1].length; kan++)
 			     { System.out.print(arr1[ch1][kan] + "\t");  }
-		  }   // 각 층이 끝나고 해야 할 일
-			System.out.println();
+			   System.out.println();
+		  }   
+			
 	}
 
 }
