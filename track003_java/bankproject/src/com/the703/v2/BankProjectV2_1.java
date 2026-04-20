@@ -1,19 +1,22 @@
-package com.the703.v1;
+package com.the703.v2;
 
 import java.util.Scanner;
+import java.util.Arrays;
 
+
+// hint 
+//변수                                   0   1    2
+/////////////////////////////////////////////////////
+  String []id=new String[3];       //  one two three
+  String []pass = new String[3];   // 1111 2222 3333
+  double []balance = new double[3];// 1100 2200 3300   
+  int menu=-1;
+  Scanner sc = new Scanner(System.in);
+/////////////////////////////////////////////////////
 public class BankProjectV2_1 {
 
 	public static void main(String[] args) {
-		// hint 
-		//변수                                   0   1    2
-		/////////////////////////////////////////////////////
-	      String []id=new String[3];       //  one two three
-	      String []pass = new String[3];   // 1111 2222 3333
-	      double []balance = new double[3];// 1100 2200 3300   
-	      int menu=-1;
-	      Scanner sc = new Scanner(System.in);
-	    /////////////////////////////////////////////////////
+
 		// 입력 처리 출력
 		// for (  ; menu !=9;     ) {
 		while (menu != 9) {
