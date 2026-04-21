@@ -65,7 +65,7 @@
         // 이벤트 대상                  이벤트 = 이벤트핸들러(해결사)
         document.getElementById("byid").onclick = function() { alert("hoho");};
 
-        document.getElementById("step").style.cursor="pointer";
+        document.getElementById("step").style.cursor = "pointer";
         document.getElementById("step").onclick = function() { alert("홍길동");};
     </script>
   </div>
@@ -146,20 +146,36 @@
       <li id="pig">PIG</li>
     </ul>
     <script>
-        //////////////////////////////
-      //1. step1 #animal 선택하기 
- 
-      //2. 그 안에 동물들(li) 찾기
- 
-
+      window.addEventListener("load", function(){
+      //////////////////////////////
+      //1. step1 #animal 선택하기 (document.getElmentById)
+         let animal = document.getElementById("animal");
+         console.log(animal);
+      //2. 그 안에 동물들(li) 찾기 (document.getElmentsByTagName)
+         let anis = animal.getElementsByTagName("li");
+         console.log(anis, typeof(anis));
       //3. 꾸미기 
+         anis[0].style.color="blue";
+         anis[1].style.color="#f00";
+    } ) ;
     </script>
     <script>
+      window.addEventListener("load", function(){ 
         //////////////////////////////
-     //4. 만능 querySelector 
-
+     //4. 만능 querySelector (css id="animal"  #animal)
+      let animal = document.querySelector("animal");
+      console.log(animal);
+      animal.style.border = "5px  dotted crimson";
+      animal.style.padding = "20px";
+      animal.style.borderRadius = "20px";
       //5. 만능 모든요소가져오기 querySelectorAll
- 
+      let alis = document.querySelectorAll("#animal  li");
+      console.log(alis);
+      for(let i=0; i<alis.length; i++) {
+        alis[i].style.backgroundColor="black";
+        alis[i].style.color="white";
+      }
+      } ) ;
     </script>
 
 
@@ -191,14 +207,38 @@
       <li id="coconut">coconut</li>
     </ul>
     <script>
+      // document.getElementsById
+      // document.getElementsByTagName
+      // document.querySelector
         //////////////////////////////
-      //Q1) document.getElementsById 이용해서  #fruits 선택  
+      //Q1) document.getElementsById 이용해서  #fruits 선택 
+       window.addEventListener("load", function(){ 
+         let fruits = document.getElementById("fruits");
+         console.log(fruits);
+        //fruits.style.padding="10px";
+        //fruits.style.backgroundColor="black";
+        //fruits.style.color="white";
       //Q2) document.getElementsByTagName 이용해서  
       //   #fruits 안의 모든 li에 배경색 black, 글자색 white , 여백 10px주기
+         let fru = fruits.getElementsByTagName("li");
+         console.log(fru, typeof(fru));
+          for(let i=0; i<fru.length; i++) {
+            fru[i].style.backgroundColor = "black";
+            fru[i].style.color="white";
+            fru[i].style.padding="10px";
+          };
       //Q2) document.getElementsById 이용해서 banana 선택 배경색 gold
+         //document.getElementById("banana").onclick = function (){
+           document.getElementById("banana").style.background ="gold";
+         // }
+         //fru[1].style.backgroundColor = "gold";
       //Q3) document.querySelector 이용해서 coconut 선택 
       //  coconut를 클릭하면 width:200px; 로 수정
-      
+           document.querySelector("#coconut").onclick = function(){
+           fru[2].style.width = "200px";
+           };
+         //this.style.width = "200px";
+       });
     </script>
   </div>
 </div>
@@ -213,12 +253,14 @@
     <div class="row">
       <div class="col"><input type="text"    id="value_target"  class="form-control"
                          placeholder="input에서는 value"  readonly/></div>
-      <div class="col"><input type="button"  value="value"  title="value_target"  id="value"  class="btn btn-outline-primary" /></div>
+      <div class="col"><input type="button"  value="value"  title="value_target"  
+                       id="value"  class="btn btn-outline-primary" /></div>
     </div>
     <hr/>
     <div class="row">
       <div class="col"> <div class="inner_target  alert alert-success"></div>  </div>
-      <div class="col"><input type="button"  value="value"  title="value_target"  id="inner"   class="btn btn-outline-primary" /></div>
+      <div class="col"><input type="button"  value="value"  title="value_target"  id="inner"   
+                        class="btn btn-outline-primary" /></div>
     </div>
 
     <script>

@@ -94,11 +94,12 @@
     <script>
       window.addEventListener("load", function( )  { 
         document.getElementById("borderStyleBtn").onclick = function() {
-          let box = prompt("테두리 스타일(solid, dashed, dotted)? ");
-          document.getElementById("ex3").style.border = "10px " + style +  " red";
+           let style = prompt("테두리 스타일 입력받음 (solid, dashed, dotted 등)");
+           document.getElementById("ex3").style.border="10px   " + style + "   red";
         }
       } ) ;
-      // document.getElementById("대상").style.border="10px " +  "solid"   + "red";
+      // document.getElementById("대상").style.border="10px " +  "solid"   + "red"; 
+      // "10px   " + "   red";   각각 3칸씩 공간 벌려줘야 함. 최대 1칸의 공간 필요함
     </script>
 
   </div>

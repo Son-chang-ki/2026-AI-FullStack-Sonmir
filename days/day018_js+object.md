@@ -24,9 +24,9 @@
 ### ■4.  복습문제
 
 ■1. 자바스크립트 빈칸채우기
-1. 자바스크립트의 출력   ( document.write   , consloe.log  )
+1. 자바스크립트의 출력   ( document.write("하고싶은 말")   , consloe.log()  )
 2. 변수    ( var  , let , const  )
-3. 변수차이   ( var(전역)   , let(지역 - 재선언 X)   , const(상수) )
+3. 변수차이   ( var(전역변수)   , let(지역변수 - 재선언 X)   , const(상수) )
 4. 변수는 모든자료형을 담을수 있다.  자료형확인은 (  typeof    )
 
 5. 알림창 종류  - (  alert,  prompt,  confirm   )
@@ -41,13 +41,12 @@
     3. alert이용해서 알림창띄우기  
    <input type="button"  value="addEventListener"  title="버튼4"  id="test"    class="btn btn-outline-primary"  />  
    <script>  
-     window.addEventListener("load", fusion() {
-        document.getElementById("test").onclick = fusion (){
+     window.addEventListener("load", function() {
+        document.getElementById("test").onclick = function() {
             let num = prompt("당신이 좋아하는 1~5사이의 숫자는 > ") ;
             alert("당신이 좋아하는 1~5사이의 숫자는" + num); };
      } ) ;
    </script>  
-
 
 
 ■2. 자바
@@ -57,7 +56,7 @@
   ==> 캡다상추
     - 캡슐화 : 외부 접근 제한
     - 다형성 : 한가지 타입으로 여러 타입을 관리, 확장성이 뛰어난 기능
-    - 상속  : 클래스의 재사용
+    - 상속   : 클래스의 재사용
     - 추상화 : 핵심기능 추출해서 만든 모델링
 3.  클래스는  (   상태(멤버변수)     )와  (   행위(멤버함수)    )를 갖는다 
 4.  클래스와 인스턴스 구분
