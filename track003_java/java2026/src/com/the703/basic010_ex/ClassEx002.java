@@ -8,7 +8,7 @@ class MyPrice001{
 	//멤버변수
 	String name;  	int price;
 	//멤버함수
-	//1)모든 클래스는 생성자 - 
+	//1)모든 클래스는 생성자 - 컴파일러가 기본생성자를 자동생성  MyPrice001()
 	void input() {//입력받는 기능  Scanner
 		Scanner scanner = new Scanner(System.in);
 		System.out.println("상품이름 입력 > ");

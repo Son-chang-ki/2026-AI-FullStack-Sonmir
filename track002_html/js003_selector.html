@@ -58,7 +58,7 @@
 <div class="container card  my-5">
   <h2  class="card-header">005.선택자 - STEP1. document.getElementById</h2>
   <div class="card-body">
-    <h4>STEP1. document.getElementById</h4>
+    <h4 id="step">STEP1. document.getElementById</h4>
     <input type="button" value="ById"  id="byid" title="버튼을 클릭하세요.(js)" class="btn btn-outline-primary"      />
     <script>
         //////////////////////////////
@@ -163,7 +163,7 @@
       window.addEventListener("load", function(){ 
         //////////////////////////////
      //4. 만능 querySelector (css id="animal"  #animal)
-      let animal = document.querySelector("animal");
+      let animal = document.querySelector("#animal");
       console.log(animal);
       animal.style.border = "5px  dotted crimson";
       animal.style.padding = "20px";
@@ -185,15 +185,41 @@
       <li id="gold">GOLD</li>
     </ul>
     <script>
-        //////////////////////////////
+      window.addEventListener("load", function(){ 
+      //Q1. #color 선택하기  color라는 변수에 담기
+      //Q2. 안에 있는 li태그들 선택
+      //Q3. 첫번째 RED의 굵게   font-weight="bold"
+      //ver-1
+        // let color = document.getElementById("color");
+        // console.log(color);
+        // let clis = color.getElementsByTagName("li");
+        // clis[0].style.fontWeight="bold";
+      // ver-2
+           let color = document.querySelector("#color");
+           let clis = color.querySelectorAll("li");
+           clis[0].style.fontWeight="bold";
+      } ) ;
+      //////////////////////////////
+      window.addEventListener("load",function () { 
+
       // 6. querySelector
+      let color = document.querySelector("#color");
+      color.style.backgroundColor = "aqua";
  
       //7. parentElement
- 
+      let orange = document.querySelector("#orange");
+       orange.parentElement.style.border = "10px dashed orange";
+       orange.parentElement.style.padding = " 20px";
+       orange.parentElement.style.borderRadius = " 20px";
+
       //8. 제일가까운 상위부모 
+       orange.closest("div").style.backgroundColor = "yellow";
+       orange.closest("div").style.color = "black";
 
       //9. 형제요소 
-      
+       orange.previousElementSibling.style.textAlign = "center";
+       orange.nextElementSibling.style.textAlign = "right";
+     } ) ;
     </script>
   </div>
   <!--     -->
@@ -251,21 +277,43 @@
   <div class="card-body">
     <h4>STEP4. value, innerHTML </h4>
     <div class="row">
-      <div class="col"><input type="text"    id="value_target"  class="form-control"
-                         placeholder="input에서는 value"  readonly/></div>
+      <div class="col">
+        <input type="text"    id="value_target"  class="form-control"
+            placeholder="input에서는 value" 
+            value = "일반텍스트 입력" 
+      </div>
       <div class="col"><input type="button"  value="value"  title="value_target"  
                        id="value"  class="btn btn-outline-primary" /></div>
     </div>
     <hr/>
     <div class="row">
-      <div class="col"> <div class="inner_target  alert alert-success"></div>  </div>
-      <div class="col"><input type="button"  value="value"  title="value_target"  id="inner"   
-                        class="btn btn-outline-primary" /></div>
+      <div class="col"> 
+        <div class="inner_target  alert alert-success"></div>  
+      </div>
+      <div class="col">
+        <input type="button"  value="value"  title="value_target"  id="inner"   
+          class="btn btn-outline-primary" /></div>
     </div>
 
     <script>
-        //////////////////////////////
- 
+      window.addEventListener("load", function(){ 
+      //#1. value_target
+         let value = document.querySelector("#value");
+         value.addEventListener("click", function() { 
+          let value_target = document.querySelector("#value_target"); // 대상(input)
+          alert(value_target.value);  // input 태그에서 대상찾을때 value : 찾기
+          value_target.value = "abc"; // valuew : 샛팅
+         });
+     
+        //#2. innerHtml - 대상
+        // inner 버튼 클릭시 div(입력받는 용도가 아닌테그).inner_target 태그 안에 값
+          let inner = document.querySelector("#inner");
+          inner.addEventListener("click" , function(){ 
+            let inner_target = document.querySelector(".inner_target");
+            inner_target.innerHTML = "HELLO"; // 해당테그에 동적으로 값 넣기 A = B
+            alert(  inner_target.innerHTML);   // alert 로 해당값 출력
+          });
+      });
     </script>
   </div>
   <!--     -->
@@ -280,20 +328,72 @@
     <div class="result_target  my-5">JAVASCRIPT</div>
 
     <pre>
-    브라우저가 로딩이 되면
+    <!-- 브라우저가 로딩이 되면
     Q1) #test1를 클릭하면 본인이름 입력받고 입력받은 값 알림창 띄우기
     Q2) #test2를 클릭하면 #test2의 value값을 INPUT으로 수정
     Q3) #test3를 클릭하면
     1.  .result_target영역안의 문자열을 알림창으로 띄우고
     2.  .result_target영역안을 본인이름으로 수정
     Q4) #test4를 마우스를 올리면(mouseover) .result_target의 배경색을 crimson으로
-                    마우스를 떼면(mouseout) .result_target의 배경색을 black으로
+                    마우스를 떼면(mouseout) .result_target의 배경색을 black으로 -->
 
      https://www.w3schools.com/js/js_events.asp
     </pre>
     <script>
-    
-        //////////////////////////////
+      window.addEventListener("load", function(){ 
+        //이벤트 대상 : #test1를 / 이벤트 : 클릭하면 / 이벤트핸들러 : 본인이름 입력받고 입력받은 값 알림창 띄우기
+         let test1 = document.querySelector("#test1");
+            test1.onclick=function(){
+            let name = prompt("당신의 이름은? ");
+            alert(name);
+          };
+      //  document.getElementById("test1").onclick = function(){ 
+      //   let name = prompt("본인 이름을 입력하세요 > ");
+      //   alert(name); };
+        //이벤트 대상 : #test2를 / 이벤트 : 클릭하면 / 이벤트핸들러 : #test2 의 value값을 INPUT으로 수정
+         let test2 = document.getElementById("test2");
+            test2.onclick = function(){
+            test2.value = "INPUT";
+          };
+        //let value = document.querySelector("#test2");
+        // value.addEventListener("click", function() { 
+        //   let value_target = document.querySelector("#test2");
+        //   alert(value_target.value);
+        //   value_target.value = "INPUT";
+        // });
+        //이벤트 대상 : #test3를 / 이벤트 : 클릭하면 
+        //이벤트핸들러 
+        //1.  .result_target영역안의 문자열을 알림창으로 띄우고
+        //2.  .result_target영역안을 본인이름으로 수정
+        let test3 = document.getElementById("test3");
+          test3.onclick = function(){
+          let target = document.querySelector(".result_target");
+          alert(target.innerHTML);
+          target.innerHTML = "SonChangKi";
+        };
+        // let inner = document.querySelector("#test3");
+        // inner.addEventListener("click", function () { 
+        //   let inner_target = document.querySelector(".result_target");
+        //   inner_target.innerHTML = "SonChangKi";
+        //   alert( inner_target.innerHTML);
+        // });
+        //Q4) #test4를 마우스를 올리면(mouseover) .result_target의 배경색을 crimson으로
+        //마우스를 떼면(mouseout) .result_target의 배경색을 black으로
+          let test4 = document.getElementById("test4");
+          test4.onmouseover = function (){
+            let target = document.getElementById(".result_target");
+            target.style.backgroundColor="crimson"; 
+          }
+          test4.onmouseout = function (){
+            let target = document.getElementById(".result_target");
+             target.style.backgroundColor="black";
+          }
+          // let mou = document.querySelector("#test4");
+          // document.getElementById(".result_target").onmouseover = function (){
+          // this.style.backgroundColor = "crimson";         };
+          // document.getElementById(".result_target").onmousout = function (){
+          // this.style.backgroundColor = "black";         }; 
+      });
     </script>
   </div>
 </div>
