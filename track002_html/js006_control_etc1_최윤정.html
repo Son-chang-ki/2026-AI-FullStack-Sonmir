@@ -14,6 +14,9 @@
 
 <!--                                    -->
 <!--                                    -->
+<!--                                    -->
+<!--                                    -->
+<!--                                    -->
 <div class="p-3 bg-primary text-white ">
   <h1>006. CONTROL</h1>
   <ol>
@@ -49,23 +52,14 @@
     </pre>
     <input type="button" value="ex1"  id="ex1"  title="버튼을 클릭하세요" class="btn btn-primary"      />
     <script>
-      window.addEventListener("load", function(){
-        let ex1 = document.getElementById("ex1")
-        ex1.addEventListener("click", function(){
-          let age = prompt("나이를 입력하세요 >");
-          console.log (typeof(age))
-          if(age>=20) { alert("성인") ;}
-          else        { alert("미성년자") ;}
-        })
-
-        // ex1.addEventListener("click",  exfn1 );
-        // function exfn1 () {
-        //  let result = "미성년자";
-        //  let avg = promt("나이를 입력하세요");
-        //  if ( avg >=20) { result = "성인" ;}
-        //  alert (result) ;
-       
-      } );
+      window.addEventListener("load", function() {
+        let ex1 = document.getElementById("ex1");
+        ex1.onclick = function() {
+          let age = prompt("나이를 입력하세요");
+          if(age >= 20) alert("성인");
+          else alert("미성년자");
+        }
+      });
     </script>
   </div>
   <!--     -->
@@ -79,20 +73,14 @@
     </pre>
     <input type="button" value="ex2"  id="ex2"  title="버튼을 클릭하세요" class="btn btn-primary"      />
     <script>
-      window.addEventListener("load", function(){
+      window.addEventListener("load", function() {
         let ex2 = document.getElementById("ex2");
-        ex2.addEventListener("click", function(){
-          let answer = prompt("사과 스펠링을 입력하세요>");
-          if (answer=='apple') { alert("OK"); }
-          else                { alert("NOT OK" ); }
-        })
-        // ex2.addEventListener("click",  exfn2 );
-        // function exfn2 () {
-        //  let result = "NOT OK";
-        //  let avg = promt("나이를 입력하세요");
-        //  if ( answer=='apple') { result = "OK" ;}
-        //  alert (result) ;
-      } );
+        ex2.onclick = function() {
+          let spell = prompt("사과 스펠링을 입력하세요");
+          if(spell == "apple") alert("OK");
+          else alert("NOT OK");
+        }
+      });
     </script>
   </div>
   <!--     -->
@@ -107,20 +95,14 @@
     </pre>
     <input type="button" value="ex3"  id="ex3"  title="버튼을 클릭하세요" class="btn btn-primary"      />
     <script>
-      window.addEventListener("load", function(){
+      window.addEventListener("load", function() {
         let ex3 = document.getElementById("ex3");
-        //let ex3 = document.querySelector("#ex3");
-        ex3.addEventListener("click", function(){
-          let answer = prompt("사과 스펠링을 적으세요");
-          //if ( answer == 'apple' || answer == 'APPLE' || answer == 'Apple')
-          //   {result ="ok" ;}
-          //   alert( result)
-          if(answer == 'apple') { alert ("ok") ; }
-          else if (answer == 'APPLE') { alert ("ok") ; }
-          else if (answer == 'Apple')  { alert ("ok") ; } 
-          else                       { alert ("not ok") ; }
-        })
-      } );
+        ex3.onclick = function() {
+          let spell = prompt("사과 스펠링을 입력하세요");
+          if(spell == "apple" || spell == "APPLE" || spell == "Apple") alert("OK");
+          else alert("NOT OK");
+        }
+      });
     </script>
   </div>
 
@@ -136,14 +118,14 @@
     </pre>
     <input type="button" value="ex4"  id="ex4"  title="버튼을 클릭하세요" class="btn btn-primary"      />
     <script>
-      window.addEventListener("load", function(){
-        let age = document.getElementById("ex4");
-        ex4.addEventListener("click", function(){
+      window.addEventListener("load", function() {
+        let ex4 = document.getElementById("ex4");
+        ex4.onclick = function() {
           let age = prompt("어린이의 나이를 입력하세요");
-          if (age<=5) { alert("어린이의 나이는" + age + "세입니다.") ;}
-          else        { alert("0~5세사이만 입력하세요") ;}
-        })
-      } );
+          if(0 <= age && age <= 5) alert(`어린이의 나이는 ${age}세입니다`);
+          else alert("0~5세사이만 입력하세요");
+        }
+      });
     </script>
   </div>
 
@@ -156,6 +138,10 @@
 <br/>
 <hr/>
 
+
+
+<!--                                    -->
+<!--                                    -->
 <!--                                    -->
 <!--                                    -->
 <div class="container card  my-3">
@@ -191,28 +177,17 @@
     <input type="button" value="switch2"  id="switch1"  title="버튼을 클릭하세요" class="btn btn-primary" />
     <script>
       window.addEventListener("load", function(){
-        let num = document.getElementById("switch1");
-        //let switch1 = document.querySelector("#switch1");
-        switch1.addEventListener("click", function(){
-        // switch1.addEventListener("click", function(){ switchfn(); });
-        // function switchfn(){
-        //   let result = "1,2,3 중에 입력하세요";
-        //   let num = prompt("1,2,3 중에 입력하세요");
-        //   switch (Number(num)) {
-        //     case 1 : alert("공부하기"); break;
-        //     case 2 : alert("운동하기"); break;
-        //     case 3 : alert("영화보기"); break; }
-        //     alert(result);
-        // }
+        let switch1 = document.getElementById("switch1");
+        switch1.onclick = function() {
           let num = prompt("1,2,3 중에 입력하세요");
-          switch (Number(num)) {
-            case 1 : alert("공부하기"); break;
-            case 2 : alert("운동하기"); break;
-            case 3 : alert("영화보기"); break;
-            default : alert("1,2,3 중에 입력하세요");
+          switch(Number(num)){
+            case 1: alert("공부하기"); break;
+            case 2: alert("운동하기"); break;
+            case 3: alert("영화보기"); break;
+            default: alert("1,2,3 중에 입력하세요");
           }
-        });
-      } );
+        }
+      });
     </script>
 </div>
 
@@ -228,26 +203,35 @@
     <input type="button" value="switch2"  id="switch2"  title="버튼을 클릭하세요" class="btn btn-primary"      />
     <script>
       window.addEventListener("load", function(){
-       let st = document.getElementById("switch2");
-       switch2.addEventListener("click", function(){
-        let st = prompt("a,b,c 중에 입력하세요");
-        switch(st) {
-          case 'a' : case 'A' : alert("Apple"); break;
-          case 'b' : case 'B' : alert("Banana"); break;
-          case 'c' : case 'C' : alert("Coconut"); break;
-          default   : alert("a,b,c 중에 입력하세요")
+        let switch2 = document.getElementById("switch2");
+        switch2.onclick = function() {
+          let alpha = prompt("a,b,c 중에 입력하세요");
+          switch(alpha){
+            case "a": case "A" : alert("Apple"); break;
+            case "b": case "B" : alert("Banana"); break;
+            case "c": case "C" : alert("Coconut"); break;
+            default: alert("a,b,c 중에 입력하세요");
+          }
         }
-       })
-      } );
+      });
     </script>
   </div>
 </div>
 
+
+
+
+<br/>
+<br/>
 <br/>
 <br/>
 <br/>
 <hr/>
 
+
+
+<!--                                    -->
+<!--                                    -->
 <!--                                    -->
 <!--                                    -->
 <div class="container card  my-3">
@@ -307,23 +291,62 @@
       <script>
         // for, while, do while
         //A1) 10 20 30 40 50 
+        for(let i = 10; i <= 50; i += 10){
+          // console.log(i);
+        }
 
         //A2) 100 90 80 70 60 
+        for(let i = 100; i > 50; i -= 10){
+          // console.log(i);
+        }
 
         //A3) 1 4 9 16
+        for(let i = 1; i <= 4; i++){
+          // console.log(i*i);
+        }
          
         //A4) 2 5 8 11 14
+        for(let i = 2; i <= 14; i+=3){
+          // console.log(i);
+        }
 
         //A5) hi1 hi2 hi3 hi4
+        for(let i = 1; i <= 4; i++){
+          // console.log(`hi${i}`);
+        }
          
         //A6) bye bye bye bye bye
+        for(let i = 0; i < 5; i++){
+          // console.log("bye");
+        }
         
         // 향상된 for , forEach
         //A7) const list1 = [10,20,30,40,50];
+        const list1 = [10,20,30,40,50];
+        for(let v of list1){
+          // console.log(v);
+        }
+        list1.forEach((v,i)=>{
+          // console.log(v)
+        })
         
         //A8) const list2 = ['dog','cat','bird','fish','lion'];
+        const list2 = ['dog','cat','bird','fish','lion'];
+        for(let v of list2){
+          // console.log(v);
+        }
+        list2.forEach((v,i)=>{
+          // console.log(v)
+        })
 
         //A9) const list3 = ['spring','summer','autumn','winter'];
+        const list3 = ['spring','summer','autumn','winter'];
+        for(let v of list3){
+          // console.log(v);
+        }
+        list3.forEach((v,i)=>{
+          // console.log(v)
+        })
         
       </script>
   </div>
@@ -378,30 +401,36 @@
            title="어린이의 나이를 0~5세사이만 입력하세요."
     />
     <script>
-      // window.addEventListener("load", function(){
-      //    document.getElementById("age").onclick = ad;
-      //    function ad() {
-      //     For(;;){
-      //       let age = prompt("어린이의 나이를 0~5세사이만 입력")
-      //     }
-      //    }
-
-      window.addEventListener("load", function(){
-        let age = document.getElementById("age");
-        age.addEventListener("click",function(){
-           ageFn();
-        });
-        function ageFn (){
-          let answer = -1;
-          let result = "0~5세 사이가 아닙니다.";
-          while ( !(answer >=0 && answer <=5) ) { // 0~5세 사이가 아니라면
-            answer = prompt("어린이의 나이를 0~5세사이만 입력가능");
-            if (answer >=0 && answer <=5)  { result = " 어린이의 나이는 " + answer ; }
-            alert(result);
+      //version-1
+      /* window.addEventListener("load", function(){
+         let ageBtn = document.getElementById("age");
+         ageBtn.onclick = function(){
+           let age = -1;
+           while(age < 0 || age > 5){
+             age = prompt("어린이의 나이를 0~5세사이만 입력하세요");
            }
-       } 
-    } );
- 
+           alert(`어린이의 나이는 ${age}세 입니다.`);
+         }
+       });
+      */
+
+      //version-2
+      window.addEventListener("load", function(){
+        let ageBtn = document.getElementById("age");
+        ageBtn.onclick = function(){
+          ageFn();
+        }
+
+        function ageFn(){
+          let answer = -1;
+          let result = "0~5세 사이가 아닙니다."
+          while( !(answer >= 0 && answer <= 5)) { // 0~5세 사이가 아니라면
+            answer = prompt("어린이의 나이는 0~5사이만 입력가능");
+            if(answer >= 0 && answer <= 5) {result = "어린이의 나이는 "+ answer; }
+            alert(result);
+          }
+        }
+      });
     </script>
   </div>
 
@@ -419,7 +448,7 @@
       +,-,*,/를 입력받지 못하면 무한반복으로 다시 입력받게 하시오.
     4. 각 연산에 맞게 계산기를 구현하시오. (+,-,*,/)
     </pre>
-    <form action="" method="post"  id="calc_form">
+    <form action="#" method="post"  id="calc_form">
       <fieldset>
       <legend class="myhidden"> 계산기 </legend>
           <p class="">
@@ -446,38 +475,74 @@
       </fieldset>
     </form>
     <script>
-      window.addEventListener("load" , function(){
+      window.addEventListener("load", function(){
         //1. 대상
-          let btn     = document.getElementById("calc"); //버튼
-          let targets = document.querySelectorAll("#calc_form  input"); 
-          console.log(targets); //#0  button //1: num1 , 2:abc, 3:num2, 4: result
-          let num1 = -1, num2=-1, op=' ', result=0;
+        let btn = document.getElementById("calc");
+        let target = document.querySelectorAll("#calc_form input");
+        console.log(target);
+        let num1 = -1, num2 = -1, op = ' ', result = 0;
 
-          btn.addEventListener("click" , function(){
-            //2. 입력 (0~100사이 무한반복, 빈칸검사)
-            for(;;){  //초기값 num1 = -1, num2=-1, op=' '
-              if(   !(num1>=0  &&  num1<=100) | num1==""  ){ //0~100사이가 아니거나  빈문자열
-                 num1 = prompt("1. 정수입력 0~100"); // 50
-              }else if(!(num2>=0  &&  num2<=100) | num2==""){
-                 num2 = prompt("2. 정수입력 0~100"); //3
-              }else if( !(op == '+' || op == '-' || op == '*' || op == '/') ){
-                 op = prompt("3. 연산자입력 (+,-,*,/)");  //+
-              }else{ break;}
-            }
-            //3. 처리
-            switch(op){
+        btn.addEventListener("click", function() {
+          //2. 입력 (0~100 사이 무한반복, 빈칸검사)
+          for(;;){
+            if(!(num1 >= 0 && num1 <= 100) | num1 == ""){ //0~100사이가 아니거나 빈문자열
+              num1 = prompt("1. 정수 입력 0~100");
+            } else if(!(num2 >= 0 && num2 <= 100) | num2 == ""){
+              num2 = prompt("2. 정수 입력 0~100");
+            } else if(!( op == "+" || op == "-" || op == "*" || op == "/")| op == "" ){
+              op = prompt("3. 연산자 입력 (+,-,*,/)");
+            } else{ break; }
+          }
+          //3. 처리
+          switch(op){
               case '+' : result = Number(num1) + Number(num2); break;
               case '-' : result = Number(num1) - Number(num2); break;
               case '*' : result = Number(num1) * Number(num2); break;
               case '/' : result = Number(num1) / Number(num2); break;
-            }
-            //4. 각 value 각각 셋팅
+          }
+          //4. 각 value 각각 셋팅
             targets[1].value = num1;
             targets[2].value = op;
             targets[3].value = num2;
             targets[4].value = op!='/'? result: result.toFixed(2); //소수점 2
-            
-          });
+        });
+        // document.getElementById("calc").onclick = function(){
+        //   let result = 0;
+        //   let val1 = -1;
+        //   let op = "";
+        //   let val2 = -1;
+          
+        //   //1. 빈칸검사를 하시오.
+        //   //2. 숫자1는 0~100 사이의 숫자를 입력받지 못하면 무한반복으로 다시 입력받게 하시오.
+        //   while(val1 == "" || Number.isNaN(val1) || val1 < 0 || val1 > 100 ){
+        //     val1 = Number(prompt("1. 숫자1 : 0~100 사이의 숫자를 입력하세요"));
+        //     console.log(Number.isNaN(val1));
+        //     console.log(val1 == "");
+        //     console.log(val1 < 0);
+        //     console.log(val1 > 100);
+        //   };
+        //   //3. 연산자는 +,-,*,/를 입력받지 못하면 무한반복으로 다시 입력받게 하시오.
+        //   while(op == "" || !( op == "+" || op == "-" || op == "*" || op == "/")){
+        //     op = prompt("2. 연산자: +,-,*,/를 입력해주세요");
+
+        //   }
+        //   //4. 숫자2는 0~100 사이의 숫자를 입력받지 못하면 무한반복으로 다시 입력받게 하시오.
+        //   while( val2 == "" ||Number.isNaN(val2)|| val2 < 0 || val2 > 100 ){
+        //     val2 = Number(prompt("3. 숫자2 : 0~100 사이의 숫자를 입력하세요"));
+        //   };
+        //   //5. 각 연산에 맞게 계산기를 구현하시오. (+,-,*,/)
+        //   switch(op){
+        //     case"+": result = Number(val1)+Number(val2); break;
+        //     case"-": result = Number(val1)-Number(val2); break;
+        //     case"*": result = Number(val1)*Number(val2); break;
+        //     case"/": result = Number(val1)/Number(val2); break;
+        //   }
+        //   //6. 결과 확인 및 결과 화면에 출력
+        //   document.getElementById("num1").value = val1;
+        //   document.getElementById("abc").value = op;
+        //   document.getElementById("num2").value = val2;
+        //   document.getElementById("result1").value = result.toFixed(2);
+        // };
       });
     </script>
 </div> <!-- end contianer  -->
