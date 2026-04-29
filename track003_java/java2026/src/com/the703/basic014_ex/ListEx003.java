@@ -73,7 +73,7 @@ public class ListEx003 {
 			   		   System.out.println("✅" + name + "추가 완료!! \n");  break;
 			   		   
 			   case 2: // 목록 - 아이스크림 목록 list.get()
-				   if(list.size() == 0 ) {System.out.println("아직 등록된 아이스크림이 없습니다.\\n"); continue;}
+				   if(list.size() == 0 ) {System.out.println("아직 등록된 아이스크림이 없습니다.\n"); continue;}
 				   for ( IceCreamDTO a : list) {System.out.println(a);}  break;
 				   
 			   case 3: // 제거 - 아이스크림 이름 입력 받아서 제거 list.remove()
