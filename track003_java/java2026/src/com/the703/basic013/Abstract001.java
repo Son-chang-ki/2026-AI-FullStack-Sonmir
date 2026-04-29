@@ -12,7 +12,7 @@ package com.the703.basic013;
  
  */
 abstract class Animal { 
-	 String name;  // 인스턴스 변수 - heap area - new O - this 각각
+	 String name;  // 인스턴스 변수 - heap area - new O - 생성자 O - this 각각
 	 abstract void eat(); // 추상메서드는 { } 구현부가 없음.
 	 abstract void sleep(); //추상메서드 추상클래스로 만들어줘야 함.
 	 abstract void poo(); // 추상화, 일반화, 설계 : 공통의 속성, 구체적인 내용 없음
@@ -33,7 +33,8 @@ class Dog extends Animal { // 구현클래스 - 강아지는 동물이다
 public class Abstract001 {
 	public static void main(String[] args) {
 		//1. abstract : 일반클래스 + 설계
-		//Animal ani = new Animal(); // new 메모리 빌리고 객체생성, Animal 초기화 { } 구현부가 없음
+		//Animal ani = new Animal(); // new 메모리 빌리고 객체생성, Animal 초기화 
+		// ==>> { } 구현부가 없음 ==>> abstract void eat(); ==>> 틀만 제공하고 실제동작을 구현하는 부분은 하위클래스에서 구현
 		//Cannot instantiate the type Animal
 		//abstract void eat();
 		

@@ -11,7 +11,7 @@ interface Animal2 {
 }
 class Saram implements Animal2 {
 	@Override public void eat() { 
-		//company = "kakao"; //The final field Animal2.company cannot be assigned
+		//company = "kakao"; //상수: 수정 X, 값 재할당 X //The final field Animal2.company cannot be assigned
 		System.out.println(Animal2.company + "랍스타... 냠냠 "  );
 	}
 }
