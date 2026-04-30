@@ -34,11 +34,7 @@ public class Interface001 {
           ↑       ↑
  Saram{@eat()}  Pig{@eat()}
 
-
-
-
  */
-
 
 /*
 1. interface
