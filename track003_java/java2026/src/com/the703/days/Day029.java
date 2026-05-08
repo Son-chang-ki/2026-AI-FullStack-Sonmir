@@ -1,11 +1,14 @@
 package com.the703.days;
 
 import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map.Entry;
 import java.util.Objects;
 import java.util.Set;
-import java.util.Iterator;
 //Player DTO 클래스 만들기     private String name;  private int score;
 class Player {
 	private String name;
@@ -26,11 +29,14 @@ class Player {
 	public void setName(String name) { this.name = name; }
 	public int getScore() { return score; }
 	public void setScore(int score) { this.score = score; }
-	
 }
 
 public class Day029 {
 	public static void main(String[] args) { 
+		//기차 List - 순서가 있고 중복 허용// 추가 : add, 가져오기 : get, 갯수 : size, 삭제 : remove, 포함여부 : contains
+		//Set(주머니) 순서 X, 중복 X, 추가 : add, 가져오기 : for, 갯수 : size, 삭제 : remove, 포함여부 : contains
+		//Map : 기차 - key(사전 : key:value(한쌍)) put, get(key), 갯수 : size, 삭제 : remove, 포함여부 : contains
+		
 		//List (ArrayList) 출력
 		List<Player> pl = new ArrayList<>();
 		pl.add(new Player("Mario", 1200));
@@ -44,6 +50,13 @@ public class Day029 {
 	    System.out.println();
 	    System.out.println();
 	    
+	//	    int i = 0;
+	//	    for (Player m : pl) { 
+	//	    	  System.out.printf("%d    %s    %d\n", (++i), m.getName(), m.getScore() );	   }
+	//
+	//	     // 오름차순
+	//	      System.out.println("\n\n 가격순으로 오름차순");
+	    
 	    // Set (HashSet) 출력
 		Set<Player> se = new HashSet<>();
 		se.add(new Player("Mario", 1200));
@@ -51,18 +64,57 @@ public class Day029 {
 		se.add(new Player("Peach", 1800));
 		se.add(new Player("Bowser", 900));
 		se.add(new Player("Bowser", 900));
-		i1 = 0 ;
-		Iterator<Player> in = se.iterator();
-		while(in.hasNext()) {
-			Player pl = in.next();
-			
+		
+		Iterator<Player> iter = se.iterator(); // 1. 줄을 서시오
+	    int i1 = 0;
+	    while(iter.hasNext()) { //2. 처리대상의 유무
+	    	Player pl2 = iter.next(); //3. 한개씩 꺼내오기
+	    		System.out.printf("%d  %s  %d\n" , (++i1), pl2.getName(), pl2.getScore() );     }
+	    System.out.println();
+	    System.out.println();
+	    
+	    // Map (HashMap) 출력
+		HashMap<String, Player> mapPlayers = new HashMap<>();
+		mapPlayers.put("mario", new Player("Mario", 1200));
+		mapPlayers.put("luigi", new Player("Luigi", 1500));
+		mapPlayers.put("peach", new Player("Peach", 1800));
+		mapPlayers.put("bowser", new Player("Bowser", 900));
+		
+//		for(String key : mapPlayers.keySet()) {
+//			System.out.printf("%s    %s    %s\n", key, mapPlayers.get(key).getName(), mapPlayers.get(key).getScore() ); 
+//		     }
+		System.out.println();
+	    System.out.println();
+		for(Entry<String, Player> e : mapPlayers.entrySet()) {
+			System.out.println(e.getKey() + "\t" + e.getValue().getName() + "\t" + e.getValue().getScore());
 		}
+		//Q6. 정렬 문제
+//		6-1. List코드에서 익명 클래스로 점수 오름차순 정렬
+		pl.sort(new Comparator< Player> () {
+
+			@Override public int compare(Player o1, Player o2) 
+			{  return Integer.compare(o1.getScore(), o2.getScore()); } // 오름차순
+			//{  return Integer.compare(o2.getScore(), o1.getScore()); }  // 내림차순 
+			});  //Comparator< ? super Player> c
+		for (int ii = 0; ii<pl.size(); i1++) {
+			Player p = pl.get(i1); System.out.printf("%d  %s  %d\n" , ii+1, p.getName(), p.getScore() ); 		}
 		
-		
-		
-		
+//		6-2. 람다식으로 점수 내림차순 정렬
+		pl.sort(( o1,  o2)-> Integer.compare(o1.getScore(), o2.getScore())   );   //## 람다
+	      
+	      for(int ii=0; ii<pl.size(); ii++) {
+	         Player p = pl.get(i1); System.out.printf("%d    %s    %d  \n" , ii+1 , p.getName(), p.getScore() );
+	      }
+	      
+//		6-3. 메서드 참조로 점수 오름차순 정렬
+	      pl.sort( Comparator.comparingInt( Player::getScore ) );     //## 참조
+	      
+	      for(int ii=0; ii<pl.size(); i1++) {
+	         Player p = pl.get(i1); System.out.printf("%d    %s    %d  \n" , ii+1 , p.getName(), p.getScore() );
+	      }
 		
     }
+	
 }
 
 /*
@@ -111,6 +163,7 @@ mapPlayers.put("mario", new Player("Mario", 1200));
 mapPlayers.put("luigi", new Player("Luigi", 1500));
 mapPlayers.put("peach", new Player("Peach", 1800));
 mapPlayers.put("bowser", new Player("Bowser", 900));
+
 5-3. for-each + entrySet 이용해서 출력
 출력 예시
 mario   Mario    1200
