@@ -2,6 +2,7 @@ package com.the703.v3;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 //1. Dto 데이터전송목적
 class BankDto{
@@ -15,7 +16,6 @@ class BankDto{
 		this.pass = pass;
 		this.balance = balance;
 	} 
-	
 }
 
 class Bank{
@@ -25,7 +25,24 @@ class Bank{
 	public Bank(List<BankDto> users) { super(); this.users = users; }
 	
 	// 메뉴 - 안에 내용작성
-	public void menu() {}   
+	public void menu() {
+		int menu = -1; String id   = "", pass=""; double balance=-1;
+		Scanner scanner = new Scanner(System.in);
+		//입력 //처리 //출력
+		//for(   ;menu!=9;   ) {
+		while(menu!=9) {
+			System.out.println( id + "\t" + pass + "\t" + balance);  // 계좌의 1명분  확인용
+			System.out.print("\n\n🌟💰 WELCOME TO BANK SYSTEM 💰🌟\r\n"
+					+ "[1] ➕ 계좌 추가 [2] 🔍 계좌 조회 [3] 💵 입금하기 [4] 💸 출금하기 [5] 🗑️ 계좌 삭제  [9]종료\r\n"
+					+ "👉 번호를 선택하세요:");
+			menu = scanner.nextInt();
+			if (menu == 9) {
+				System.out.println("프로그램을 종료합니다.");
+			} else if (menu == 1) {
+				add();
+			}
+		}
+	}   
 	// 유저추가  (add)
 	public void add() {
 		//변수
@@ -39,7 +56,6 @@ class Bank{
 	// 유저삭제(remove)
 	// 종료   
 }
-
 public class BankCollect {
 	public static void main(String[] args) {
 		List<BankDto>  users = new ArrayList<>();
@@ -48,8 +64,6 @@ public class BankCollect {
 		
 		//테스트용
 		//		controller.add();
-		//	
-
+		//		System.out.println(controller.users);
 	}
-
 }
