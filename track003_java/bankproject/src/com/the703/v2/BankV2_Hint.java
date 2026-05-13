@@ -17,7 +17,8 @@ public class BankV2_Hint {
 					System.out.println(   Arrays.toString(id)   );  // 현재상태확인
 					System.out.println(   Arrays.toString(balance)   ); 
 					System.out.println("\n======BANK======");
-					System.out.println("[1] ➕ 계좌 추가" + "\n[2] 🔍 계좌 조회" + "\n[3] 💵 입금하기" + "\n[4] 💸 출금하기"  + "\n[5] 🗑️ 계좌 삭제" + "\n[9] 💀 종료" + "\n👉 번호를 선택하세요: ");
+					System.out.println("[1] ➕ 계좌 추가" + "\n[2] 🔍 계좌 조회" + "\n[3] 💵 입금하기" + "\n[4] 💸 출금하기"  + "\n[5] 🗑️ 계좌 삭제" 
+					                   + "\n[9] 💀 종료" + "\n👉 번호를 선택하세요: ");
 					menu = sc.nextInt(); // 1 ~ 9까지 입력
 					
 					if (menu == 9) { System.out.println("종료합니다"); break; }

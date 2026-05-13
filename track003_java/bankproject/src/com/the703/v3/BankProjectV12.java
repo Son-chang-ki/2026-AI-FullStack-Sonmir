@@ -4,52 +4,51 @@ import java.util.Scanner;
 
 public class BankProjectV12 {
 	public static void main(String[] args) {
-		//변수
-		int menu = -1; String id   = "", pass=""; double balance=-1;
-		Scanner scanner = new Scanner(System.in);
+	//변수
+	int menu = -1; String id   = "", pass=""; double balance=-1;
+	Scanner scanner = new Scanner(System.in);
+	
+	//입력 //처리 //출력
+	//for(   ;menu!=9;   ) {
+	while(menu!=9) {
+		System.out.println( id + "\t" + pass + "\t" + balance);  // 계좌의 1명분  확인용
+		System.out.print("\n\n🌟💰 WELCOME TO BANK SYSTEM 💰🌟\r\n"
+				+ "[1] ➕ 계좌 추가 [2] 🔍 계좌 조회 [3] 💵 입금하기 [4] 💸 출금하기 [5] 🗑️ 계좌 삭제  [9]종료\r\n"
+				+ "👉 번호를 선택하세요:");
+
+		menu = scanner.nextInt();
 		
-		//입력 //처리 //출력
-		//for(   ;menu!=9;   ) {
-		while(menu!=9) {
-			System.out.println( id + "\t" + pass + "\t" + balance);  // 계좌의 1명분  확인용
-			System.out.print("\n\n🌟💰 WELCOME TO BANK SYSTEM 💰🌟\r\n"
-					+ "[1] ➕ 계좌 추가 [2] 🔍 계좌 조회 [3] 💵 입금하기 [4] 💸 출금하기 [5] 🗑️ 계좌 삭제  [9]종료\r\n"
-					+ "👉 번호를 선택하세요:");
+		if (menu == 9) {
+			System.out.println("프로그램을 종료합니다.");
+		} else if (menu == 1) {
+			//변수 x
+			//입력
+			System.out.print("아이디  입력 > ");   id = scanner.next();
+			System.out.print("비밀번호 입력 > ");  pass = scanner.next();
+			System.out.print("잔액    입력 > ");  balance = scanner.nextDouble();
+			//처리 x 출력 x
+		} else if (menu >= 2 && menu <= 5) { 
+			//	2-1. 사용자가 맞는지 여부
+			String tempid="", temppass=""; 
+			System.out.print("아이디  입력 > ");   tempid = scanner.next();
+			System.out.print("비밀번호 입력 > ");   temppass = scanner.next(); 
+			//if(  !(id ==  tempid  &&  pass == temppass) ) { continue; }
+			if(  id.equals( tempid )  ||  pass.equals(temppass)   ) { System.out.println("정보확인해주세요.");  continue; }  // 아이디 다르거나 비번이 다르다면 continue
 			
-			
-			menu = scanner.nextInt();
-			
-			if (menu == 9) {
-				System.out.println("프로그램을 종료합니다.");
-			} else if (menu == 1) {
-				//변수 x
-				//입력
-				System.out.print("아이디  입력 > ");   id = scanner.next();
-				System.out.print("비밀번호 입력 > ");  pass = scanner.next();
-				System.out.print("잔액    입력 > ");  balance = scanner.nextDouble();
-				//처리 x 출력 x
-			} else if (menu >= 2 && menu <= 5) { 
-				//	2-1. 사용자가 맞는지 여부
-				String tempid="", temppass=""; 
-				System.out.print("아이디  입력 > ");   tempid = scanner.next();
-				System.out.print("비밀번호 입력 > ");   temppass = scanner.next(); 
-				//if(  !(id ==  tempid  &&  pass == temppass) ) { continue; }
-				if(  id.equals( tempid )  ||  pass.equals(temppass)   ) { System.out.println("정보확인해주세요.");  continue; }  // 아이디 다르거나 비번이 다르다면 continue
-				
-				//2-2. 조회면 조회기능, 입력이면 사용자에게 입력받아서 입금, 출금이면 출금금액받아서 출금 , 계좌삭제라면 y,n입력받아서 계좌삭제
-				switch( menu ){
-					case 2 : System.out.printf("ID : %d\nPASS: %d\nBALANCE: %d\n" ,id,pass, balance);     break;
-					case 3 : System.out.print("입금할 금액 > ");  balance += scanner.nextInt();              break;
-					case 4 :  
-						System.out.print("출금할 금액 > ");   int tempbalance = scanner.nextInt();  
-						System.out.println( tempbalance > balance ?"잔액부족! 출금불가" : "출금완료! 현재잔액 : " + (balance -= tempbalance));
-					break;
-					case 5 : System.out.print("계좌삭제 (Y/N) > "); char again = scanner.next().charAt(0);
-						if(again == 'Y' || again == 'y') { id   = ""; pass=""; balance=-1;  }
-					break;
-				}
+			//2-2. 조회면 조회기능, 입력이면 사용자에게 입력받아서 입금, 출금이면 출금금액받아서 출금 , 계좌삭제라면 y,n입력받아서 계좌삭제
+			switch( menu ){
+				case 2 : System.out.printf("ID : %d\nPASS: %d\nBALANCE: %d\n" ,id,pass, balance);     break;
+				case 3 : System.out.print("입금할 금액 > ");  balance += scanner.nextInt();              break;
+				case 4 :  
+					System.out.print("출금할 금액 > ");   int tempbalance = scanner.nextInt();  
+					System.out.println( tempbalance > balance ?"잔액부족! 출금불가" : "출금완료! 현재잔액 : " + (balance -= tempbalance));
+				break;
+				case 5 : System.out.print("계좌삭제 (Y/N) > "); char again = scanner.next().charAt(0);
+					if(again == 'Y' || again == 'y') { id   = ""; pass=""; balance=-1;  }
+				break;
 			}
-		}// end while		 
+		}
+	}// end while		 
 	}
 }
 
