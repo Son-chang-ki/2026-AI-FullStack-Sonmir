@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import test.Bank;
+import test.BankDto;
+
 //1. Dto 데이터전송목적
 class BankDto{
 	private String id;

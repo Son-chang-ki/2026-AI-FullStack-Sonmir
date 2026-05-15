@@ -15,13 +15,12 @@
    <div class="container card my-5">
       <h3 class="card-header">REQUEST - 요청 - google </h3>
       <p class = " alert alert-waring my-5">
-         https://search.naver.com/search.naver?where=nexearch&sm=top_hty&fbm=1&ie=utf8&query=apple  <br/>
-         1. 처리컨테이너 (action) :  https://search.naver.com/search.naver  <br/>
+         https://www.google.com/search?query=apple 쿼리스트링 <br/>
+         1. 처리컨테이너 (action : 해결사) :  https://www.google.com/search <br/>
          2. 처리방식 (method)    :  get
          3. 보관용기 (name)      :  query 
       </p>
-      <form action="https://www.google.com/search?q=apple&rlz=1C1YVBP_koKR1207KR1207&oq=apple&gs
-      _lcrp=EgZjaHJvbWUqEAgAEAAY4wIYsQMYyQMYgAQyEAgAEAAY4wIYsQMYyQMYgAQyEwgBEC4YxwEYsQMYyQMY0QMYgAQyCggCEAAYsQMYgAQyDQgDEAAYgwEYsQMYgAQyEAgEEC4YxwEYsQMY0QMYgAQyCggFEAAYsQMYgAQyCggGEAAYsQMYgAQyBwgHEAAYgAQyDQgIEAAYgwEYsQMYgAQyDQgJEAAYkgMYgAQYigXSAQk0NzQ2ajBqMTWoAgiwAgE&sourceid=chrome&ie=UTF-8" method ="get" onsubmit ="return check()">
+      <form action="https://www.google.com/search" method ="get" onsubmit ="return check()">
          <div class ="my-3">
             <label for ="query">검색어</label>
             <input type="text" class="form-control" placeholder = "구글에게 물어봐~~~" id="query" name="query" />
@@ -30,9 +29,9 @@
       </form>
       <script>
          function check() {
-        	 let query = document.getElementById("query");
+        	 let query = document.getElementById("query"); // let query = document.querySelector("#query");
         	 if(query.value.trim() == "") {
-        		 alert("검색어를 입력하세요.")
+        		 alert("빈칸입니다. 검색어를 입력하세요.")
         		 query.focus();
         		 return false;
         	 }
