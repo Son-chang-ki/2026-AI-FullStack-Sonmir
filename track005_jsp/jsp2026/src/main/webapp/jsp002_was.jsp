@@ -1,6 +1,6 @@
-<%@page import="java.util.Calendar"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%> <!--자바 영역  --> <!-- 주석 ctrl + shift + /  -->
+<%@ page import="java.util.Calendar"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%> 
+<!--  자바 영역  --> <!-- 주석 ctrl + shift + /  -->
 <!DOCTYPE html>
 <html>
 <head>
