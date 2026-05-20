@@ -45,8 +45,8 @@ select * from userinfo_ex; -- 전체 데이터검색
 -- |  2 | second |  22 |
 -- |  3 | third  |  33 |
 -- |  4 | fourth |  44 |
--- |  5 | fifth    |  50 |
--- |  6 | six   |  66 |
+-- |  5 | fifth  |  50 |
+-- |  6 | six    |  66 |
 -- +----+--------+-----+
 
 insert into  userinfo_ex                  values  (  5, 'fifth' , 50);
@@ -63,8 +63,8 @@ select * from userinfo_ex;
 -- |  2 | second |  22 |
 -- |  3 | third  |  33 |
 -- |  4 | fourth |  44 |
--- |  5 | fifth    |  55 |   ← age 55로 수정
--- |  6 | six   |  66 |       ← name sixth로 수정
+-- |  5 | fifth  |  55 |   ← age 55로 수정
+-- |  6 | six    |  66 |       ← name sixth로 수정
 -- +----+--------+-----+
 
 update    userinfo_ex  set   age =55  where  no=5;

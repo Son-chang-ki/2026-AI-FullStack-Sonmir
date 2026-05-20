@@ -380,11 +380,5 @@ ALTER TABLE 테이블명(tbl_name)
     3 rows in set (0.00 sec)
 
 
-
-
-
-
-
-
 ---
 
