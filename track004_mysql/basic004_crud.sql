@@ -85,9 +85,6 @@ select * from userinfo;
 -- - 원하는 순서를 지정하여 데이터를 삽입하는 것도 가능합니다.
 
 
-
-
-
 -- ■ 진행   2. CRUD (INSERT 연습문제)
 -- ------------------------------------------------------------
 -- ------------------------------------------------------------ [연습문제]  STEP1  있다면 PASS
@@ -213,9 +210,6 @@ insert into dept  values ( 20 , 'RESEARCH' , 'DALLAS');
 -- |     5 |  3001 |  9999 |
 -- +-------+-------+-------+
 -- 5 rows in set (0.00 sec)
-
-
-
 
 
 -- -- 001
@@ -344,8 +338,6 @@ update  userinfo  set  name='fourth' , age=44   where  no=4 ;
 
 select * from userinfo;  
 
- 
-
 
 -- ■ 진행   4. CRUD (UPDATE 연습문제)
 -- ------------------------------------------------------------
@@ -387,7 +379,6 @@ desc score;
 insert into score (sname, sjava, sjsp , sspring , sproject ) 
 values ('aaa'   , 100 ,100 ,   100 ,    100 );
 
-
 insert into score (sname, sjava, sjsp , sspring , sproject )     values ('aaa'   , 100 ,100 ,   100 ,    100 );
 insert into score (sname, sjava, sjsp , sspring , sproject )     values ('bbb'   ,  90 ,   98 ,      88 ,      100 );
 insert into score (sname, sjava, sjsp , sspring , sproject )     values ('ccc'   ,  70 ,   20 ,      78 ,       80);
@@ -395,7 +386,6 @@ insert into score (sname, sjava, sjsp , sspring , sproject )     values ('ddd'  
 insert into score (sname, sjava, sjsp , sspring , sproject )     values ('abc'   , 89 ,   98 ,      69 ,       77 );
 
 select * from score;
-
 
 -- [001]   이름이 ccc인 사람의 sjava=90 , sjsp=90, sspring=90으로 수정하시오
 update score   set    sjava=90 , sjsp=90, sspring=90   where   sname='ccc';
@@ -419,7 +409,6 @@ update score
 set    sjava=92 , sjsp=78 ,   sstotal =  sjava+sjsp+sspring+sproject , ssavg = sstotal/4
 where sname='bbb';
 
- 
 
 -- [007]  성적의 평균이 ssavg 89.5점인 학생의 semail을 second@gmail.com로 , sname을 second로 수정하시오
 update  score
@@ -439,8 +428,6 @@ update   score   set  semail='hello@gmail.com'  where  ssavg=89.5  and sproject=
 alter table score  modify  ssavg  double;
 desc score;
 select * from  score;   
- 
-
 
 
 -- ■ 진행   5. CRUD (DELETE)

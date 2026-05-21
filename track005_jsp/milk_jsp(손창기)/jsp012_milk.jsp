@@ -118,7 +118,7 @@
             	out.println("<tr><td>" + rset.getInt("ono") //칸
             			               + "</td><td>" + rset.getString("oname") 
             			               + "</td><td>" + rset.getInt("onum") 
-            			               + "</td><td>" + rset.getString("oip") + "</td></tr>");
+            			               + "</td><td>" + rset.getString("odate") + "</td></tr>");
             }
             // 4. JDBC close(끊기)
             if(rset != null) {rset.close();}
@@ -161,7 +161,23 @@
 	                       <button  type="submit"  class="btn btn-warning" > 주문하기 </button>
 	                    </div>
 			          </form>
-			       주문 할 내용이 맞으실까요?
+			       <script>
+			           function order(){
+			              let oname = document.querySelector("#oname");
+			              let onum = document.querySelector("#onum");
+			              if(oname.value.trim() == ""){
+			                 alert("주문할 우유 이름 입력");
+			                 oname.focus();
+			                 return false;
+			              }
+			              if(onum.value.trim() == ""){
+			                 alter("주문할 우유 개수 입력");
+			                 onum.focus();
+			                 return false;
+			              }
+			              return true;
+			           }
+			           </script>
 			      </div>
 			    </div>
 			  </div>
@@ -174,7 +190,7 @@
 			    </div>
 			    <div id="collapseTwo" class="collapse" data-bs-parent="#accordion">
 			      <div class="card-body">
-			        <form action ="jsp012_update.jsp" method="post" onsubmit = "return order1()">
+			        <form action ="jsp012_update.jsp" method="post" onsubmit = "return update()">
 			        	 <div class = "my-3">
 			               <label for ="ono1" class="form-label"> 수정 할 우유 번호 </label>
 			               <input type="text" class="form-control" id="ono1" name="ono" />
@@ -191,7 +207,29 @@
 	                       <button  type="submit"  class="btn btn-warning" > 주문 수정하기 </button>
 	                    </div>
 			          </form>
-			       주문 할 내용이 맞으실까요?
+			           <script>
+			           function update(){
+			              let ono = document.querySelector("#ono1"); 
+			              let oname = document.querySelector("#oname1");
+			              let onum = document.querySelector("#onum1");
+			              if(ono.value.trim() == ""){
+			                 alert("수정할 번호 입력");
+			                 ono.focus();
+			                 return false;
+			              }
+			              if(oname.value.trim() == ""){
+			                 alert("수정할 우유 이름 입력");
+			                 oname.focus();
+			                 return false;
+			              }
+			              if(onum.value.trim() == ""){
+			                 alert("수정할 우유 개수 입력");
+			                 onum.focus();
+			                 return false;
+			              }
+			              return true;
+			           }
+			           </script>
 			      </div>
 			    </div>
 			  </div>
@@ -204,24 +242,28 @@
 			    </div>
 			    <div id="collapseThree" class="collapse" data-bs-parent="#accordion">
 			      <div class="card-body">
-			        <form action ="jsp012_delete.jsp" method="post" onsubmit = "return order()">
+			        <form action ="jsp012_delete.jsp" method="post" onsubmit = "return asd()">
 			        	 <div class = "my-3">
-			               <label for ="ono2" class="form-label"> 주문할 우유 번호 </label>
+			               <label for ="ono2" class="form-label"> 취소 주문 번호 </label>
 			               <input type="text" class="form-control" id="ono2" name="ono" />
 			             </div>
-			             <div class = "my-3">
-			               <label for ="oname2" class="form-label"> 주문할 우유 이름 </label>
-			               <input type="text" class="form-control" id="oname2" name="oname" />
-			             </div>
-			             <div class="my-3">
-	                       <label for="onum2"  class="form-label"> 주문할 우유 갯수 </label>
-	                       <input type="text" class="form-control"  id="onum2"   name="onum" />
-	                    </div>
-	                    <div class="my-3"> 
+
+	                    
 	                       <button  type="submit"  class="btn btn-warning" > 주문 삭제하기 </button>
-	                    </div>
+
 			          </form>
-			       주문 할 내용이 맞으실까요?
+			           <script>
+			           function asd(){ //Q1. 빈칸검사
+			              let ono = document.getElementById("ono2"); 
+			              console.log(ono);
+			               if(ono.value.trim() == ""){
+			                 alert("삭제하실 번호(no) 입력");
+			                 ono.focus();
+			                 return false;
+			              } 
+			              return true;  
+			           }
+			           </script>
 			      </div>
 			    </div>
 			  </div>			
