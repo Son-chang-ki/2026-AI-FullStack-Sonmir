@@ -1,0 +1,14 @@
+use mbasic;
+create database dbdbig;
+create table mvcboard1 (
+bno int not null auto_increment primary key,
+bname varchar(200) not null,
+bpass varchar(50) not null,
+btitle varchar(1000) not null,
+bcontent text not null,
+bdate timestamp not null  DEFAULT CURRENT_TIMESTAMP,
+bhit int not null DEFAULT 0, 
+bip varchar(50) not null
+);
+select * from mvcboard1;
+desc mvcboard1;
