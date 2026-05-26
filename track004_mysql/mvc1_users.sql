@@ -31,3 +31,12 @@ desc users;
 alter table users modify bip varchar(50) not null ;  
 alter table users modify udate timestamp not null ;  
 alter table users modify udate timestamp not null default current_timestamp;  
+
+use mbasic;
+insert into  users (nickname, bpass, email, mobile, bip)  values ('aaa' , 'ccc' , 'aaa@gamil.com', '010-1111-1111', '127.0.0.1');
+
+select * from users;
+
+select count(*) 
+from users
+where bpass='1111' and email='aaa@gmail.com';
