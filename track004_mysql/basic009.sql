@@ -409,6 +409,3 @@ from  emp;
 -- 14 rows in set (0.00 sec)
 
 
-
-
-
