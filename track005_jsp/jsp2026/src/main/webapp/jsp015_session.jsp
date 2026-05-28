@@ -17,7 +17,7 @@
       <pre class = "alert alert-">
         1. 로그인에 성공시 - session.setAttribute() 서버측에 사용자 정보 저장
         2. 로그인에 성공시 - session.getAttribute() 서버측에 정보를 header
-        3. 로그아웃 시    - sessoin.
+        3. 로그아웃 시    - sessoin.invalidator()   서버측의 정보를 삭제
       </pre>
       <table class="table  table-striped table-bordered table-hover  text-center my-3">
          <caption>SESSION</caption>
