@@ -33,10 +33,10 @@
       </pre>
        
        <h4>001. java class 부품객체 사용</h4>
-       <%@page import="com.the703.servlet.java001"%>
+       <%@page import="com.the703.servlet.Java001"%>
        <%
-       java001 basic = new java001(10,20);  // ctrl + space
-       out.println(basic);
+              Java001 basic = new Java001(10,20);  // ctrl + space
+              out.println(basic);
        %>
        
        <h4>002. Servlet  get/post</h4>
