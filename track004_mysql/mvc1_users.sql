@@ -40,3 +40,7 @@ select * from users;
 select count(*) 
 from users
 where bpass='1111' and email='aaa@gmail.com';
+
+alter table  users rename;
+
+
