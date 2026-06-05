@@ -25,7 +25,7 @@ public class ModelTest001 {
 	@Autowired UserInfoMapper userinfo;
 	
 
-    @Test
+	@Ignore   // @Test
     public void test6() {
     	//5. ªË¡¶
     	System.out.println(userinfo.delete(9));

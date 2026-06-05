@@ -17,6 +17,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import com.the703.dao.BoardMapper;
 import com.the703.dao.TestMapper;
 import com.the703.dto.BoardDto;
+import com.the703.service.BoardService;
 
 @RunWith(SpringJUnit4ClassRunner.class) // 1. spring 구동
 @ContextConfiguration(locations = "classpath:config/root-context.xml")  //2. 설정파일
@@ -28,22 +29,44 @@ public class ModelTest002 {
 	@Autowired TestMapper      testMapper; 
 	
 	@Autowired BoardMapper      boardMapper; 
+	@Autowired BoardService     service;
 	
-	@Test     public void test4() throws UnknownHostException {
-	// 삭제
-	System.out.println(boardMapper.delete(1));	
-	// 수정
-	BoardDto dto2 = new BoardDto(); dto2.setBname("first"); dto2.setBno(2);
+	@Test   public void test5() {
+		// 삭제
+		BoardDto dto = new BoardDto(); dto.setBno(4);
+		System.out.println(service.delete(dto));
+		
+		// 수정
+//		BoardDto dto = new BoardDto(); 
+//		dto.setBname("first");  	dto.setBpass("1111");		dto.setBno(4);
+//		dto.setBtitle("new-service-첫번째 글쓰기");   dto.setBcontent("new-service-내용");
+//		System.out.println(service.edit(dto)); 
+//		
+		// 검색
+		System.out.println(service.detail(4));
+		
+		//삽입 - 4
+		/*
+		 * BoardDto dto = new BoardDto(); dto.setBname("first"); dto.setBpass("1111");
+		 * dto.setBtitle("service-첫번째 글쓰기"); dto.setBcontent("service-내용");
+		 * System.out.println(service.insert(dto));
+		 */
+		
+		// 전체리스트
+		//System.out.println(service.selectAll());
+	    }
 	
-	  dto2.setBtitle("첫번째 글쓰기-new"); dto2.setBcontent("내용-new");
-	 
+		@Test     public void test4() throws UnknownHostException {
+		// 삭제
+		System.out.println(boardMapper.delete(1));	
+		// 수정
+		BoardDto dto2 = new BoardDto(); dto2.setBname("first"); dto2.setBno(2);
+		dto2.setBtitle("첫번째 글쓰기-new"); dto2.setBcontent("내용-new");
+		System.out.println(boardMapper.update(dto2)); // 실행한 줄 수 1
 	
-	System.out.println(boardMapper.update(dto2)); // 실행한 줄 수 1
-//
-	// 검색
-	System.out.println(boardMapper.select(1));	
-	// 삽입
-	
+		// 검색
+		System.out.println(boardMapper.select(1));	
+	  // 삽입
 	  BoardDto dto = new BoardDto(); dto.setBname("first"); dto.setBpass("1111");
 	  dto.setBtitle("첫번째 글쓰기"); dto.setBcontent("내용");
 	  dto.setBip(InetAddress.getLocalHost().getHostAddress()); //#1

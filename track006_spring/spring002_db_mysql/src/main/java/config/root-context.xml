@@ -34,7 +34,7 @@ https://mybatis.org/mybatis-3/ko/getting-started.html
          <property name="mapperLocations">
              <list>
                 <value>classpath:config/test-mapper.xml</value>
-           <value>classpath:config/userinfo-mapper.xml</value> 
+           		<value>classpath:config/userinfo-mapper.xml</value> 
             </list>
          </property>
     </bean>
