@@ -12,3 +12,7 @@ bip varchar(50) not null
 );
 select * from mvcboard2;
 desc mvcboard2;
+
+alter table mvcboard2 add  bfile varchar(500) not null;
+
+alter table mvcboard2 modify bfile varchar(500) default 'the703.png';

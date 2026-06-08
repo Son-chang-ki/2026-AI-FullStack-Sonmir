@@ -12,9 +12,12 @@ public class BoardDto {
 	public String bdate;
 	public int bhit;
 	public String bip;
+	public String bfile;
 
 }
 /*
+mysql> alter table mvcboard2 add  bfile varchar(500) not null;
+mysql> alter table mvcboard2 modify bfile varchar(500) default 'the703.png';
 mysql> desc mvcboard2;
 +----------+---------------+------+-----+-------------------+-------------------+
 | Field    | Type          | Null | Key | Default           | Extra             |
@@ -27,8 +30,9 @@ mysql> desc mvcboard2;
 | bdate    | timestamp     | NO   |     | CURRENT_TIMESTAMP | DEFAULT_GENERATED |
 | bhit     | int           | NO   |     | 0                 |                   |
 | bip      | varchar(50)   | NO   |     | NULL              |                   |
+| bfile    | varchar(500)  | YES  |     | the703.png        |                   |
 +----------+---------------+------+-----+-------------------+-------------------+
-8 rows in set (0.00 sec)
+9 rows in set (0.00 sec)
 
 
 */

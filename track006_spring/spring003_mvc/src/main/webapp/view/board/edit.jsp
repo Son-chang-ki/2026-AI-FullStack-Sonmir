@@ -10,7 +10,7 @@ window.addEventListener("load", function() {
 	let result = '${result}'  // el
 	console.log(result);
 	
-	if( result == "글수정 실패") {  alert(result); history.go(-1); } // 알림창, 뒤로 가기
+	if( result == "글 수정 실패") {  alert(result); history.go(-1); } // 알림창, 뒤로 가기
 	else if(result.length != 0 ) { alert(result); }
 });
 
@@ -19,7 +19,9 @@ window.addEventListener("load", function() {
    <div class="container  my-5">
       <h3>글 수정</h3>
       <form  action ="${pageContext.request.contextPath}/board/edit.do?bno=${dto.bno}"  
-         method="post"   onsubmit="return checkForm()">
+             method = "post"   
+            enctype ="multipart/form-data"
+            onsubmit ="return checkForm()">
       	<div  class="my-3">
       		<label for="bname"   class="form-label">이름</label>
       		<input type="text"   class="form-control"    id="bname"  
@@ -39,6 +41,18 @@ window.addEventListener("load", function() {
       		<textarea  class="form-control"    id="bcontent"  name="bcontent"  >
       		   ${dto.bcontent}	</textarea>
       	</div>
+      	
+      	<div class="my-3">
+         <label for="bfile"   class="form-label">기존파일</label>
+         <input type="text"  id="bfile"  name="bfile"   value = "${dto.bfile}" readonly class="form-control"/>
+        </div> 
+        
+        <div class="my-3">
+         <label for="file"   class="form-label">파일업로드</label>
+         <input type="file"  id="file"  name="file"   class="form-control"/>
+        </div> 
+        
+      	
       	<div  class="my-3  text-end"> 
       		<button type="reset"   class="btn btn-outline-primary"  title="글수정취소">취소</button>
       		<a href="${pageContext.request.contextPath}/board/list.do"  
