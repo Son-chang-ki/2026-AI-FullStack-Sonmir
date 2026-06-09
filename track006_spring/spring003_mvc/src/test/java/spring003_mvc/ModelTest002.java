@@ -59,7 +59,7 @@ public class ModelTest002 {
 		dto.setBtitle("new-service-첫번째 글쓰기");   dto.setBcontent("new-service-내용");
 //
 		
-		System.out.println(service.edit(dto)); 
+		//System.out.println(service.edit(dto)); 
 //		
 		// 검색
 		System.out.println(service.detail(4));

@@ -36,12 +36,14 @@ window.addEventListener("load", function() {
             </thead>
             <tbody>
                <c:forEach  var="dto"  items="${list}"    varStatus="status">
-                  <tr>    <!-- 전체 갯수         상태, 갯수 -->
-                     <td>${ list.size() - status.index }</td>
-                     <td>
-                         <a href="${pageContext.request.contextPath}/board/detail.do?bno=${dto.bno}">
-                          ${ dto.btitle }
-                          </a>
+                  <tr>    <!-- 265(전체 갯수)-1         상태, 갯수 -->
+                          <!-- 1) 265(전체 갯수)-1  한개씩 빼기    
+                               2) 전체갯수-0   256~247  / 전체갯수 -10   246~237  / 체갯수 -30   246~237
+                          -->
+                     <td>${paging.listtotal - paging.pstartno - status.index }</td>
+                     <td> <a href="${pageContext.request.contextPath}/board/detail.do?bno=${dto.bno}">
+                             ${ dto.btitle }
+                         </a> 
                      </td>
                      <td>${ dto.bname }</td>
                      <td>${ dto.bdate }</td>
@@ -54,7 +56,12 @@ window.addEventListener("load", function() {
             <tfoot><tr><td colspan="5">
                <ul class="pagination  justify-content-center"> 
                <!-- 이전 -->
-               
+               <c:if test="${paging.start > paging.bottomlist }">
+                  <li class="page-item">
+                     <a href="?pstartno=${paging.start-1}" class="page-link">이전</a>
+                  </li>
+                </c:if> 
+                
                <!-- 1,2,3,4,5,6,7,8,,10 -->
                <c:forEach var="i" begin="${paging.start}"  end="${paging.end}">
                   <li class="page-item <c:if test="${i == paging.current}" > active </c:if> ">
@@ -62,8 +69,12 @@ window.addEventListener("load", function() {
                   </li>
                </c:forEach>
                
-               <!-- 다음 -->
-               
+               <!-- 다음   - 다음글이 있다면  - 하단의 전체 > end  -->
+               <c:if test="${paging.pagetotal > paging.end }">
+                  <li class="page-item">
+                     <a href="?pstartno=${paging.end+1}" class="page-link">다음</a>
+                  </li>
+                </c:if>  
                </ul></td></tr>
             </tfoot>
         </table>

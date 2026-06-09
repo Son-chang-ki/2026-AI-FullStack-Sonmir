@@ -41,6 +41,10 @@ select count(*)
 from users
 where bpass='1111' and email='aaa@gmail.com';
 
-alter table  users rename;
+-- alter table  users rename;
 
+-- create : insert into users (nickname, bpass, email, mobile, bip)   value  ( #{nickname}, #{bpass}, #{email}, #{mobile}, #{bip} )
+-- read   : select count(*) from users where email=#{email} and bpass=#{bpass}
+--          select * from users where uno=#{uno} 
+--          select email from users where email=#{email} 
 

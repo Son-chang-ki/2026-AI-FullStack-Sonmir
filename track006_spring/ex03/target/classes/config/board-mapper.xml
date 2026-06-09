@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.the703.dao.BoardMapper">
+
+  <insert       id="insert"   parameterType="UserDto"> 
+       insert into  users  (nickname ,bpass, email , mobile, bip )  
+       values              ( #{nickname} ,#{bpass}, #{email} , #{mobile}, #{bip} )  
+  </insert>
+
+  <select    resultType="int"     id="findlogin"   parameterType="UserDto"  >  
+     select count(*) from users  where  email=#{email}  and  bpass=#{bpass}
+  </select>
+  
+  <select   resultType="UserDto"   id="findByUno"    parameterType="int"> 
+     select * from  users  where  uno=#{uno} 
+  </select>
+ 
+  <select   resultType="string"   id="findByEmail"    parameterType="string"> 
+     select email from users  where  email=#{email}
+  </select>
+  
+  <!-- paging -->
+  <!-- paging -->
+  <select resultType="BoardDto"   id="select10"   parameterType="java.util.HashMap">
+     select * from mvcboard2 order by bno desc limit #{start} , #{end}
+  </select>
+  
+  <select resultType="int"   id="selectCnt"   >
+     select count(*) from mvcboard2
+  </select>
+  
+</mapper>
+
+<!--  crud - insert, select, update, delete
+create : insert into mvcboard2 (bname, bpass, btitle, bcontent, bip) 
+         value ( #{bname}, #{bpass}, #{btitle}, #{bcontent}, #{bip})
+read :   select * from mvcboard2 order by bno desc
+         select * from mvcboard2 where bno = #{bno}
+update : update mvcboard2 set btitle = #{btitle}  , bcontent = #{bcontent}  where bno = #{bno}
+delete : delete  from mvcboard2  where bno= #{bno} 
+ -->
