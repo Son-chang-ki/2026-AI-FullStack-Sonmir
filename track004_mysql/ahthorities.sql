@@ -10,9 +10,14 @@
 -- 1) insert 구문찾기 first@gmail.com / ROLE_MEMBER
 -- 2) JOIN 이용해서 first@gmail.com 의 email, bpass, auth 필드값 찾기
 
-insert 
+-- insert 
 
 
 select u.email, u.bpass, a.auth
 from users left join ahthorities a on u.email = a.email
-where u.email='first@gmail.com'
+where u.email='first@gmail.com';
+
+use mbasic;
+select * from users; 
+delete from users;
+delete from authorities;

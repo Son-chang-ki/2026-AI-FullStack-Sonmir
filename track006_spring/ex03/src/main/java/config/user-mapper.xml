@@ -4,42 +4,49 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.the703.dao.UserMapper">
       
-  <insert       id="insert"   parameterType="UserDto"> 
-       insert into users (nickname, bpass, email, mobile, bip) 
-       values ( #{nickname}, #{bpass}, #{email}, #{mobile}, #{bip} )  
-  </insert>
-  
-   <select    resultType="int"     id="findLogin"   parameterType="UserDto"  >  
-     select count(*) from users  where  email=#{email}  and  bpass=#{bpass}
-  </select>
-  
-  <select   resultType="UserDto"   id="findByUno"    parameterType="int"> 
-     select * from  users  where  uno=#{uno} 
-  </select>
- 
-  <select   resultType="string"   id="findByEmail"    parameterType="string"> 
-     select email from users  where  email=#{email}
-  </select>
-  
- <!-- authorities -->
-  <!-- authorities -->
-  <insert   id="insertAuth"  parameterType="AuthDto">
-     insert into  authorities (email, auth) values ( #{email} , #{auth} ) 
-  </insert>
-  <select     resultMap="authListMap"   id="readAuth"  parameterType="AuthDto">
-     select     u.email,  u.bpass,  a.auth
-     from      users u    left   join authorities a    on u.email   = a.email  
-     where     u.email =#{email} 
-  </select>
-  <resultMap  id="authListMap"          type="AuthListDto">
-       <result  property="email"         column="email"  />
-       <result  property="bpass"         column="bpass"  />
-       <collection  property="authList"  resultMap="authMap"  />
-  </resultMap>
-  <resultMap  id="authMap"       type="AuthDto" >
-       <result  property="email"     column="email"  />
-       <result  property="auth"      column="auth"   />
-  </resultMap> 
+	  <insert       id="insert"   parameterType="UserDto"> 
+	       insert into users (nickname, bpass, email, mobile, bip) 
+	       values ( #{nickname}, #{bpass}, #{email}, #{mobile}, #{bip} )  
+	  </insert>
+	  
+	   <select    resultType="int"     id="findLogin"   parameterType="UserDto"  >  
+	     select count(*) from users  where  email=#{email}  and  bpass=#{bpass}
+	  </select>
+	  
+	  <select   resultType="UserDto"   id="findByUno"    parameterType="int"> 
+	     select * from  users  where  uno=#{uno} 
+	  </select>
+	 
+	  <select   resultType="string"   id="findByEmail"    parameterType="string"> 
+	     select email from users  where  email=#{email}
+	  </select>
+	  
+	 <!-- authorities -->
+	  <!-- authorities -->
+	  <insert   id="insertAuth"  parameterType="AuthDto">
+	     insert into  authorities (email, auth) values ( #{email} , #{auth} ) 
+	  </insert>
+	  
+	  <select resultType="UserDto"   id="findByEmailUserInfo"    parameterType="string">
+	    select * from users  where  email=#{email}
+	  </select>
+	  
+	  <select     resultMap="authListMap"   id="readAuth"  parameterType="AuthDto">
+	     select     u.email,  u.bpass,  a.auth
+	     from      users u    left   join authorities a    on u.email   = a.email  
+	     where     u.email =#{email} 
+	  </select>
+	  
+	  <resultMap  id="authListMap"          type="AuthListDto">
+	       <result  property="email"         column="email"  />
+	       <result  property="bpass"         column="bpass"  />
+	       <collection  property="authList"  resultMap="authMap"  />
+	  </resultMap>
+	  
+	  <resultMap  id="authMap"       type="AuthDto" >
+	       <result  property="email"     column="email"  />
+	       <result  property="auth"      column="auth"   />
+	  </resultMap> 
   
 </mapper> 
 
@@ -54,21 +61,20 @@
      select count(*) from mvcboard2
   </select> -->
 
-<!--  crud - insert, select, update, delete
-create : insert into mvcboard2 (bname, bpass, btitle, bcontent, bip) 
-         value ( #{bname}, #{bpass}, #{btitle}, #{bcontent}, #{bip})
-read :   select * from mvcboard2 order by bno desc
-         select * from mvcboard2 where bno = #{bno}
-update : update mvcboard2 set btitle = #{btitle}  , bcontent = #{bcontent}  where bno = #{bno}
-delete : delete  from mvcboard2  where bno= #{bno} 
+	<!--  crud - insert, select, update, delete
+	create : insert into mvcboard2 (bname, bpass, btitle, bcontent, bip) 
+	         value ( #{bname}, #{bpass}, #{btitle}, #{bcontent}, #{bip})
+	read :   select * from mvcboard2 order by bno desc
+	         select * from mvcboard2 where bno = #{bno}
+	update : update mvcboard2 set btitle = #{btitle}  , bcontent = #{bcontent}  where bno = #{bno}
+	delete : delete  from mvcboard2  where bno= #{bno} 
 
-
- 1) insert 구문찾기 first@gmail.com / ROLE_MEMBER
- 2) JOIN 이용해서 first@gmail.com 의 email, bpass, auth 필드값 찾기
-
-select u.email, u.bpass, a.auth
-from users left join ahthorities a on u.email = a.email
-where u.email='first@gmail.com' ;
-
- -->
+	
+	 1) insert 구문찾기 first@gmail.com / ROLE_MEMBER
+	 2) JOIN 이용해서 first@gmail.com 의 email, bpass, auth 필드값 찾기
+	
+	select u.email, u.bpass, a.auth
+	from users left join ahthorities a on u.email = a.email
+	where u.email='first@gmail.com' ;
+	 -->
  

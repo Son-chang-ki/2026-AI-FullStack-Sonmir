@@ -35,14 +35,20 @@ public class ModelTest2 {
 	@Autowired @Qualifier("passwordEncoder")   PasswordEncoder   pwenconder; 
 	
 	/* security   */
-	@Test   public void test3() {
+	@Test  public void test4() {
+		AuthDto dto2 = new AuthDto();   dto2.setEmail("a@a");
+		System.out.println(service.readAuth(dto2));
+	}
+	
+	
+	@Ignore   @Test   public void test3() {
 		// 로그인시 인가
 		AuthDto dto2 = new AuthDto();  dto2.setEmail("a@a");
 		System.out.println(user.readAuth(dto2));  
 //		
 //		// 권한2개 줬으면 주석달고 위에 해당 유저 정보 가져오기
 //		// 권한2개 - 회원, ADMIN
-//		AuthDto dto1 = new AuthDto();  dto1.setEmail("a@a");  dto1.setAuth("ROLE_MEMBER");
+		AuthDto dto1 = new AuthDto();  dto1.setEmail("a@a");  dto1.setAuth("ROLE_MEMBER");
 //		 AuthDto dto1 = new AuthDto();  dto1.setEmail("a@a");  dto1.setAuth("ROLE_ADMIN");
 //		System.out.println(user.insertAuth(dto1));  // ROLE_MEMBER  , ROLE_ADMIN
 		

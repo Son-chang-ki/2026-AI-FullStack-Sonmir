@@ -6,7 +6,7 @@
         
     <!--            배경       글자색       글자중앙정렬   안쪽여백   -->
     <footer  class="bg-dark   text-white  text-center   p-5">
-        copyrights &copy;  THEJOA703 2026 all rights reserved.
+        copyrights &copy;  THEJOA703  MVC1-BOARD  JSP PROJECT  2026 all rights reserved.
     </footer>
 </body>
 </html>
