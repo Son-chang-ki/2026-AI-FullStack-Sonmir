@@ -13,11 +13,13 @@
 -- insert 
 
 
-select u.email, u.bpass, a.auth
-from users left join ahthorities a on u.email = a.email
-where u.email='first@gmail.com';
+-- select u.email, u.bpass, a.auth
+-- from users left join ahthorities a on u.email = a.email
+-- where u.email='first@gmail.com';
 
-use mbasic;
-select * from users; 
-delete from users;
-delete from authorities;
+-- use mbasic;
+-- select * from users; 
+
+-- SET SQL_SAFE_UPDATES = 0;
+-- delete from users;
+-- delete from authorities;
