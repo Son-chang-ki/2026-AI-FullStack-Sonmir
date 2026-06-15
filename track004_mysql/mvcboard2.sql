@@ -16,3 +16,4 @@ desc mvcboard2;
 alter table mvcboard2 add  bfile varchar(500) not null;
 
 alter table mvcboard2 modify bfile varchar(500) default 'the703.png';
+

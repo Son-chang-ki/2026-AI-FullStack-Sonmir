@@ -87,6 +87,7 @@
        <version>3.5.6</version>
    </dependency>
    
+   <!-- myBatis와 spring의 연결 -->
    <!-- https://mvnrepository.com/artifact/org.mybatis/mybatis-spring -->
    <dependency>
        <groupId>org.mybatis</groupId>
@@ -117,18 +118,19 @@
 	  <artifactId>log4j-core</artifactId>
 	  <version>2.17.2</version>
 	</dependency>
+
 	<dependency>
 	  <groupId>org.apache.logging.log4j</groupId>
 	  <artifactId>log4j-api</artifactId>
 	  <version>2.17.2</version>
 	</dependency> 
+
 	<dependency>
 	  <groupId>org.apache.logging.log4j</groupId>
 	  <artifactId>log4j-slf4j-impl</artifactId>
 	  <version>2.17.2</version>
 	</dependency>       
-      
-      
+
 	
 	<!-- spring-webmvc -->	
 	<!-- spring-webmvc -->	
@@ -139,6 +141,7 @@
 	    <artifactId>spring-webmvc</artifactId>
 	    <version>4.3.27.RELEASE</version>
 	  </dependency>
+
 	<!-- jstl -->	 
 	<!-- jstl -->	 
   	<!-- https://mvnrepository.com/artifact/javax.servlet/jstl -->
@@ -147,13 +150,7 @@
 		<artifactId>jstl</artifactId>
 		<version>1.2</version>
 	</dependency>
-	
-	<dependency>
-		<groupId>javax.servlet</groupId>
-		<artifactId>jstl</artifactId>
-		<version>1.2</version>
-	</dependency>     
-      
+
       
 <!-- img upload -->	
 <!-- img upload -->	 
@@ -199,6 +196,7 @@
 			<artifactId>spring-security-taglibs</artifactId>
 			<version>4.2.2.RELEASE</version>
 		</dependency>
+
 <!-- SECURITY -->
 <!-- SECURITY -->
 <!-- SECURITY -->      
@@ -243,10 +241,12 @@
           <release>11</release>
         </configuration>
       </plugin>
+
       <plugin>
         <artifactId>maven-war-plugin</artifactId>
         <version>3.2.3</version>
       </plugin>
+
     </plugins>
   </build>
 </project>
@@ -256,7 +256,20 @@
 - [ ] 3. web.xml
     ==> 문지기
 
-   ---
+---
+
+  <?xml version="1.0" encoding="UTF-8"?>
+  <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
+  <display-name>ex02</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+
    <!-- 한글 인코딩 필터 설정 UTF-8   -->
 	<filter>
 	    <filter-name>encodingFilter</filter-name>
@@ -316,8 +329,9 @@
 			<url-pattern>/</url-pattern>
 		</servlet-mapping>
   
+</web-app>
 
-   ---
+---
 
 
 - [ ] 4. confing  
