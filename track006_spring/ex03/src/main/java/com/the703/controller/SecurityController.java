@@ -46,8 +46,6 @@ public class SecurityController {
 	
 }	
 	
-	
-	
 	//@RequestMapping("/logout")	public String logout() { return "/security/logout";	}
 
 
