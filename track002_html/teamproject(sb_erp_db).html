@@ -1,0 +1,209 @@
+📌 관리자 대시보드 (admin-dashboard.html)
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>ERP 공지 관리 대시보드</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        h1 { margin-bottom: 20px; }
+        table { border-collapse: collapse; width: 100%; margin-top: 10px; }
+        table, th, td { border: 1px solid #ccc; }
+        th, td { padding: 8px; text-align: center; }
+        input, textarea { width: 100%; margin: 5px 0; }
+        button { margin: 5px; padding: 5px 10px; }
+        .form-section { border: 1px solid #ddd; padding: 15px; margin-bottom: 20px; }
+        .pagination { margin-top: 15px; text-align: center; }
+        .pagination button { margin: 0 3px; }
+    </style>
+</head>
+<body>
+<h1>ERP 전사 공지 관리 대시보드</h1>
+
+<!-- 공지 등록 -->
+<div class="form-section">
+    <h2>공지 등록</h2>
+    <input type="text" id="title" placeholder="제목">
+    <textarea id="content" placeholder="내용"></textarea>
+    <button id="addNoticeBtn">등록</button>
+</div>
+
+<!-- 검색 -->
+<div class="form-section">
+    <h2>공지 검색</h2>
+    <input type="text" id="keyword" placeholder="검색어 입력">
+    <button id="searchBtn">검색</button>
+</div>
+<!-- 공지 목록 -->
+<div class="form-section">
+    <h2>공지 목록</h2>
+    <table id="noticeTable">
+        <thead>
+            <tr>
+                <th>번호</th>
+                <th>제목</th>
+                <th>작성자</th>
+                <th>작성일</th>
+                <th>수정</th>
+                <th>삭제</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+    <div class="pagination" id="pagination"></div>
+</div>
+
+<!-- 공지 수정 -->
+<div class="form-section" id="updateSection" style="display:none;">
+    <h2>공지 수정</h2>
+    <input type="hidden" id="updateId">
+    <input type="text" id="updateTitle" placeholder="제목">
+    <textarea id="updateContent" placeholder="내용"></textarea>
+    <button id="updateNoticeBtn">수정 완료</button>
+    <button onclick="$('#updateSection').hide()">취소</button>
+</div>
+
+<script>
+let currentPage = 0;
+let pageSize = 5;
+
+// 공지 목록 불러오기 (페이징)
+function loadNotices(page = 0) {
+    $.ajax({
+        url: "/api/notice/list?page=" + page + "&size=" + pageSize,
+        type: "GET",
+        success: function(data) {
+            let rows = "";
+            $.each(data.content, function(i, notice) {
+                rows += "<tr>" +
+                        "<td>" + notice.id + "</td>" +
+                        "<td>" + notice.title + "</td>" +
+                        "<td>" + (notice.createdBy || '-') + "</td>" +
+                        "<td>" + notice.createdAt + "</td>" +
+                        "<td><button onclick='editNotice(" + notice.id + ")'>수정</button></td>" +
+                        "<td><button onclick='deleteNotice(" + notice.id + ")'>삭제</button></td>" +
+                        "</tr>";
+            });
+            $("#noticeTable tbody").html(rows);
+
+            // 페이징 UI
+            let pagination = "";
+            for (let i = 0; i < data.totalPages; i++) {
+                pagination += "<button onclick='loadNotices(" + i + ")'>" + (i+1) + "</button>";
+            }
+            $("#pagination").html(pagination);
+            currentPage = page;
+        }
+    });
+}
+
+// 공지 등록
+$("#addNoticeBtn").click(function() {
+    let notice = {
+        title: $("#title").val(),
+        content: $("#content").val()
+    };
+
+    $.ajax({
+        url: "/api/notice/admin/add",
+        type: "POST",
+        contentType: "application/json",
+        data: JSON.stringify(notice),
+        success: function() {
+            alert("등록 성공!");
+            $("#title").val("");
+            $("#content").val("");
+            loadNotices(currentPage);
+        },
+        error: function(xhr) {
+            alert("에러: " + xhr.responseText);
+        }
+    });
+});
+
+// 공지 수정 준비
+function editNotice(id) {
+    $.ajax({
+        url: "/api/notice/" + id,
+        type: "GET",
+        success: function(notice) {
+            $("#updateId").val(notice.id);
+            $("#updateTitle").val(notice.title);
+            $("#updateContent").val(notice.content);
+            $("#updateSection").show();
+        }
+    });
+}
+
+// 공지 수정 실행
+$("#updateNoticeBtn").click(function() {
+    let id = $("#updateId").val();
+    let notice = {
+        title: $("#updateTitle").val(),
+        content: $("#updateContent").val()
+    };
+
+    $.ajax({
+        url: "/api/notice/admin/update/" + id,
+        type: "PUT",
+        contentType: "application/json",
+        data: JSON.stringify(notice),
+        success: function() {
+            alert("수정 성공!");
+            $("#updateSection").hide();
+            loadNotices(currentPage);
+        },
+        error: function(xhr) {
+            alert("에러: " + xhr.responseText);
+        }
+    });
+});
+
+// 공지 삭제
+function deleteNotice(id) {
+    if (!confirm("정말 삭제하시겠습니까?")) return;
+    $.ajax({
+        url: "/api/notice/admin/delete/" + id,
+        type: "DELETE",
+        success: function() {
+            alert("삭제 성공!");
+            loadNotices(currentPage);
+        },
+        error: function(xhr) {
+            alert("에러: " + xhr.responseText);
+        }
+    });
+}
+
+// 검색
+$("#searchBtn").click(function() {
+    let keyword = $("#keyword").val();
+    $.ajax({
+        url: "/api/notice/search?keyword=" + keyword,
+        type: "GET",
+        success: function(data) {
+            let rows = "";
+            $.each(data, function(i, notice) {
+                rows += "<tr>" +
+                        "<td>" + notice.id + "</td>" +
+                        "<td>" + notice.title + "</td>" +
+                        "<td>" + (notice.createdBy || '-') + "</td>" +
+                        "<td>" + notice.createdAt + "</td>" +
+                        "<td><button onclick='editNotice(" + notice.id + ")'>수정</button></td>" +
+                        "<td><button onclick='deleteNotice(" + notice.id + ")'>삭제</button></td>" +
+                        "</tr>";
+            });
+            $("#noticeTable tbody").html(rows);
+            $("#pagination").html(""); // 검색 결과는 페이징 제거
+        }
+    });
+});
+
+// 초기 로딩
+$(document).ready(function() {
+    loadNotices();
+});
+</script>
+</body>
+</html>

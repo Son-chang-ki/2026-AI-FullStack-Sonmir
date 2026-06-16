@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>ERP 로그인</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 50px; }
+        .login-box { width: 300px; margin: auto; border: 1px solid #ddd; padding: 20px; border-radius: 5px; }
+        input { width: 100%; padding: 8px; margin: 5px 0; }
+        button { width: 100%; padding: 10px; background: #007bff; color: white; border: none; cursor: pointer; margin-top: 10px; }
+        .error { color: red; margin-top: 10px; }
+    </style>
+</head>
+<body>
+<div class="login-box">
+    <h2>ERP 로그인</h2>
+    <input type="text" id="username" placeholder="아이디">
+    <input type="password" id="password" placeholder="비밀번호">
+    <button id="loginBtn">로그인</button>
+    <button id="logoutBtn" style="display:none; background:#dc3545;">로그아웃</button>
+    <div id="errorBox" class="error"></div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    // 로그인 버튼 클릭
+    $("#loginBtn").click(function() {
+        const credentials = {
+            username: $("#username").val(),
+            password: $("#password").val()
+        };
+
+        $.ajax({
+            url: "/api/auth/login",
+            type: "POST",
+            contentType: "application/json",
+            data: JSON.stringify(credentials),
+            success: function(res) {
+                // 토큰 저장
+                localStorage.setItem("accessToken", res.accessToken);
+                localStorage.setItem("refreshToken", res.refreshToken);
+
+                // 권한 저장 (ROLE_USER / ROLE_ADMIN)
+                const role = res.authorities[0].authority.replace("ROLE_", "");
+                localStorage.setItem("role", role);
+
+                alert("로그인 성공!");
+                $("#logoutBtn").show(); // 로그아웃 버튼 표시
+                window.location.href = "/notice.html"; // 공지사항 페이지로 이동
+            },
+            error: function(err) {
+                $("#errorBox").text("로그인 실패: " + err.status);
+            }
+        });
+    });
+
+    // 로그아웃 버튼 클릭
+    $("#logoutBtn").click(function() {
+        localStorage.removeItem("accessToken");
+        localStorage.removeItem("refreshToken");
+        localStorage.removeItem("role");
+        alert("로그아웃 완료");
+        window.location.href = "/login.html"; // 로그인 페이지로 리다이렉트
+    });
+</script>
+</body>

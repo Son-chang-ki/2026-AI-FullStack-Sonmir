@@ -14,7 +14,7 @@
 
 -- 📄 DB 테이블 예시
 -- use mbasic;
--- CREATE TABLE sb_erp (
+-- CREATE TABLE notice (
 --     uno int not null auto_increment primary key,
 --     title VARCHAR(200) NOT NULL,
 --     content TEXT NOT NULL,
@@ -30,11 +30,12 @@
 -- | btitle   | varchar(200)  | NO   |     | NULL              |                   |
 -- | bcontent | varchar(1000) | NO   |     | NULL              |                   |
 -- | bwriter  | varchar(1000) | NO   |     | NULL              |                   |
--- | bdate    | timestamp     | YES  |     | CURRENT_TIMESTAMP | DEFAULT_GENERATED |
+-- | bdate    | timestamp     | no  |     | CURRENT_TIMESTAMP | DEFAULT_GENERATED |
 -- | bhit     | int           | NO   |     | 0                 |                   |
--- | bfile    | varchar(500)  | YES  |     | NULL              |                   |
+-- | bfile    | varchar(1000)  | YES  |     | NULL              |                   |
 -- +----------+---------------+------+-----+-------------------+-------------------+
 -- 7 rows in set (0.00 sec)
+-- 작성자 ==> 사원id 변경 가능성이 높음. ==> int not null
 -- alter table sb_erp add bhit int not null DEFAULT 0;
 
 -- alter table sb_erp change title  btitle VARCHAR(200) NOT NULL;
@@ -43,7 +44,7 @@
 -- alter table sb_erp change writer  bwriter VARCHAR(1000) NOT NULL;
 -- alter table sb_erp change date  bdate TIMESTAMP DEFAULT CURRENT_TIMESTAMP;
 -- alter table sb_erp change uno  bno int not null auto_increment primary key;
--- alter table sb_erp change  bfile bfile varchar(500)  null;
+-- alter table sb_erp change  bfile bfile varchar(10000)  not null;
 -- insert into  sb_erp  (uno, btitle,  bcontent, bwriter)  values  (1, 'first' , '공지'  ,  'aaaaa');
 -- insert into  sb_erp  (uno, btitle,  bcontent, bwriter)  values  (2, 'second' , '공지2'  ,  'bbbb');
 
@@ -60,4 +61,81 @@
 
 -- alter table sb_erp change sb_erp  sb_erp_db ;
 
+create database sb_erp_db;
+use sb_erp_db;
+-- 작성자 ==> 사원id 변경 가능성이 높음. ==> int not null
 
+desc sb_erp_db;
+
+CREATE TABLE notice (
+    bno int not null AUTO_INCREMENT PRIMARY KEY,   -- 공지 PK
+    com_id INT NOT NULL,                           -- 회사 FK
+    btitle VARCHAR(200) NOT NULL,             		-- 제목
+    bcontent VARCHAR(1000) NOT NULL,				-- 내용
+    bwriter INT NOT NULL,                 			-- 작성자 FK → employee.emp_no
+    bhit int NOT NULL DEFAULT 0,					-- 조회수
+	bfile varchar(1000)  NULL,						-- 첨부파일명
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,              -- 등록일자
+    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP, -- 수정일자
+    FOREIGN KEY(com_id) REFERENCES company(com_id)
+      ON UPDATE CASCADE ON DELETE CASCADE,
+    FOREIGN KEY(bwriter) REFERENCES employee(emp_no)
+      ON UPDATE CASCADE ON DELETE CASCADE
+    );
+    
+    bno INT NOT NULL AUTO_INCREMENT PRIMARY KEY,   -- 공지 PK
+    com_id INT NOT NULL,                   -- 회사 FK
+    btitle VARCHAR(200) NOT NULL,         -- 제목
+    bcontent TEXT NOT NULL,               -- 내용
+    bwriter INT NOT NULL,                 -- 작성자 FK → employee.emp_no
+    bhit INT DEFAULT 0,                   -- 조회수
+    bfile VARCHAR(200),                   -- 첨부파일명
+    createdat DATETIME DEFAULT CURRENT_TIMESTAMP,              -- 등록일자
+    updatedat DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP, -- 수정일자
+    FOREIGN KEY(com_id) REFERENCES company(com_id)
+      ON UPDATE CASCADE ON DELETE CASCADE,
+    FOREIGN KEY(bwriter) REFERENCES employee(emp_no)
+      ON UPDATE CASCADE ON DELETE CASCADE
+);    
+    
+ insert into  notice  (bno, btitle,  bcontent, bwriter)  values  (1, 'first' , '공지'  ,  'aaaaa');
+ insert into  notice  (bno, btitle,  bcontent, bwriter)  values  (2, 'second' , '공지2'  ,  'bbbb');
+
+
+-- 1. 손창기
+
+-- | ★7.  전사 공지 관리 | 사용자 | 관리자 |
+-- | --- | --- | --- |
+-- | CREATE | X | 공지 등록  |
+-- | READ | 전체 공지(페이징) ,  공지 상세보기, 검색 |  |
+-- | UPDATE | X | 공지 수정 |
+-- | DELETE | X | 공지 삭제 |
+
+-- create table notice(
+--     b_no INT AUTO_INCREMENT PRIMARY KEY,   -- 공지 PK
+--     com_id INT NOT NULL,                   -- 회사 FK
+--     b_title VARCHAR(200) NOT NULL,         -- 제목
+--     b_content TEXT NOT NULL,               -- 내용
+--     b_writer INT NOT NULL,                 -- 작성자 FK → employee.emp_no
+--     b_hit INT DEFAULT 0,                   -- 조회수
+--     b_file VARCHAR(200),                   -- 첨부파일명
+--     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,              -- 등록일자
+--     updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP, -- 수정일자
+--     FOREIGN KEY(com_id) REFERENCES company(com_id)
+--       ON UPDATE CASCADE ON DELETE CASCADE,
+--     FOREIGN KEY(b_writer) REFERENCES employee(emp_no)
+--       ON UPDATE CASCADE ON DELETE CASCADE
+-- );
+
+
+-- insert into notice (bcomid, btitle, bcontent, bwriter, bhit, bfile)
+-- values
+-- (1, 'ERP 시스템 점검 안내', '6월 20일 22시~24시 ERP 시스템 점검 예정입니다.', 1003, 12, null),
+-- (1, '인사관리 규정 개정', '직급/재직 상태 관련 규정이 개정되었습니다.', 1004, 34, 'insa_rule.pdf'),
+-- (2, '카카오 신규 서비스 발표', '신규 서비스 PoC 결과 발표 예정입니다.', 2001, 56, null);
+
+-- | bno (PK) |comid (FK) | btitle | bcontent | bwriter (FK) | bhit | bfile | createdat | updatedat |
+-- | 번호 (공지 PK) | 회사ID (FK → company) | 제목 | 내용 | 작성자ID (FK → employee) | 조회수 | 첨부파일명 | 등록일자 | 수정일자 |
+-- | 1 | 1 | ERP 시스템 점검 안내 | 6월 20일 22시~24시 ERP 시스템 점검 예정 | 1003 | 12 | (NULL) | 2026-06-15 12:25:00 | 2026-06-15 12:25:00 |
+-- | 2 | 1 | 인사관리 규정 개정 | 직급/재직 상태 관련 규정이 개정되었습니다. | 1004 | 34 | insa_rule.pdf | 2026-06-16 09:10:00 | 2026-06-16 09:10:00 |
+-- | 3 | 2 | 카카오 신규 서비스 발표 | 신규 서비스 PoC 결과 발표 예정입니다. | 2001 | 56 | (NULL) | 2026-06-16 11:00:00 | 2026-06-16 11:00:00 |
