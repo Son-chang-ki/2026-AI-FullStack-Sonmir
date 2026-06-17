@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ERP System - 공지사항</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    
+    <style>
+        :root {
+            --sidebar-bg: #1e2438;
+            --sidebar-active: #2b3454;
+            --text-muted-custom: #8991a9;
+        }
+        body {
+            background-color: #f4f6f9;
+            font-family: 'Malgun Gothic', dotum, sans-serif;
+        }
+        /* 사이드바 스타일 */
+        .sidebar {
+            width: 260px;
+            min-height: 100vh;
+            background-color: var(--sidebar-bg);
+            color: #fff;
+        }
+        .sidebar .nav-link {
+            color: #a2aabf;
+            padding: 12px 24px;
+            font-size: 15px;
+        }
+        .sidebar .nav-link:hover, .sidebar .nav-link.active {
+            color: #fff;
+            background-color: var(--sidebar-active);
+        }
+        .sidebar .user-info {
+            background-color: #161a29;
+            padding: 20px;
+        }
+        /* 메인 콘텐츠 */
+        .content-area {
+            flex: 1;
+            padding: 30px;
+        }
+        .card-custom {
+            background: #fff;
+            border: none;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+            padding: 30px;
+        }
+        .btn-primary-custom {
+            background-color: #3b66f5;
+            border: none;
+        }
+        .btn-primary-custom:hover {
+            background-color: #2a52d4;
+        }
+        /* 테이블 핀 아이콘 컬러 */
+        .bi-pin-angle-fill {
+            color: #dc3545;
+        }
+    </style>
+</head>
+<body>
+
+<div class="d-flex">
+    <div class="sidebar d-flex flex-column">
+        <div class="p-4 fs-4 fw-bold border-bottom border-secondary border-opacity-25 d-flex align-items-center">
+            <span class="bg-primary rounded p-2 me-2" style="width:12px; height:24px; display:inline-block;"></span>
+            ERP System
+        </div>
+        <div class="user-info d-flex align-items-center gap-3">
+            <div class="rounded-circle bg-primary" style="width: 40px; height: 40px;"></div>
+            <div>
+                <div class="fw-bold fs-6">홍길동</div>
+                <div class="text-muted small" style="color: var(--text-muted-custom) !important;">시스템 관리자</div>
+            </div>
+        </div>
+        <ul class="nav flex-column mt-3">
+            <li class="nav-item"><a href="#" class="nav-link">회사/조직도</a></li>
+            <li class="nav-item"><a href="#" class="nav-link">사원 정보</a></li>
+            <li class="nav-item"><a href="#" class="nav-link">전자결재</a></li>
+            <li class="nav-item"><a href="#" class="nav-link">프로젝트</a></li>
+            <li class="nav-item"><a href="#" class="nav-link">일정 관리</a></li>
+            <li class="nav-item"><a href="#" class="nav-link active border-start border-4 border-primary">공지사항</a></li>
+            <li class="nav-item"><a href="#" class="nav-link">회의실 예약</a></li>
+        </ul>
+    </div>
+
+    <div class="content-area">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h4 class="fw-bold m-0">전사 공지사항</h4>
+            <div class="text-muted small">2026.06.17</div>
+        </div>
+
+        <div id="page-container">
+
+            <!--         화면 구성              -->
+            <!--         화면 구성              -->
+          <script>
+            // 각 화면의 HTML 구조를 정의한 컴포넌트 객체입니다.
+            const Pages = {
+                // [그림 1] 공지사항 목록 화면
+                list: `
+                    <div class="card-custom">
+                        <div class="d-flex justify-content-between align-items-center mb-4">
+                            <div class="input-group" style="max-width: 400px;">
+                                <input type="text" class="form-control bg-light" placeholder="공지 제목 검색">
+                            </div>
+                            <button class="btn btn-primary-custom text-white px-4 py-2" onclick="loadPage('write')">공지 작성</button>
+                        </div>
+
+                        <div class="table-responsive">
+                            <table class="table align-middle hover-table text-center" style="border-top: 1px solid #e9ecef;">
+                                <thead class="table-light text-secondary">
+                                    <tr>
+                                        <th style="width: 80px;">번호</th>
+                                        <th class="text-start">제목</th>
+                                        <th style="width: 120px;">작성자</th>
+                                        <th style="width: 140px;">작성일</th>
+                                        <th style="width: 100px;">조회수</th>
+                                        <th style="width: 80px;">첨부</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="table-light fw-bold" style="cursor: pointer;" onclick="loadPage('detail')">
+                                        <td><i class="bi bi-pin-angle-fill"></i></td>
+                                        <td class="text-start">[필독] 2025년 하반기 보안 정책 변경 안내</td>
+                                        <td>관리자</td>
+                                        <td>2025.06.10</td>
+                                        <td>245</td>
+                                        <td><i class="bi bi-paperclip text-muted"></i></td>
+                                    </tr>
+                                    <tr class="table-light fw-bold" style="cursor: pointer;" onclick="loadPage('detail')">
+                                        <td><i class="bi bi-pin-angle-fill"></i></td>
+                                        <td class="text-start">[공지] ERP 시스템 오픈 안내</td>
+                                        <td>관리자</td>
+                                        <td>2025.06.01</td>
+                                        <td>312</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr style="cursor: pointer;" onclick="loadPage('detail')">
+                                        <td>1</td>
+                                        <td class="text-start">6월 정기 회식 일정 안내</td>
+                                        <td>김민준</td>
+                                        <td>2025.06.09</td>
+                                        <td>89</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr style="cursor: pointer;" onclick="loadPage('detail')">
+                                        <td>2</td>
+                                        <td class="text-start">사무용품 신청 마감 안내</td>
+                                        <td>이서연</td>
+                                        <td>2025.06.08</td>
+                                        <td>54</td>
+                                        <td><i class="bi bi-paperclip text-muted"></i></td>
+                                    </tr>
+                                    <tr style="cursor: pointer;" onclick="loadPage('detail')">
+                                        <td>3</td>
+                                        <td class="text-start">개발팀 코드 컨벤션 가이드</td>
+                                        <td>박지호</td>
+                                        <td>2025.06.07</td>
+                                        <td>130</td>
+                                        <td><i class="bi bi-paperclip text-muted"></i></td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td class="text-start">주차 배정 변경 안내</td>
+                                        <td>최유나</td>
+                                        <td>2025.06.05</td>
+                                        <td>72</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>5</td>
+                                        <td class="text-start">사원 건강검진 일정 안내</td>
+                                        <td>이서연</td>
+                                        <td>2025.06.03</td>
+                                        <td>161</td>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                `,
+
+                // [그림 2] 공지사항 작성 화면
+                write: `
+                    <div class="card-custom">
+                        <form onsubmit="event.preventDefault(); loadPage('list');">
+                            <div class="row mb-4 align-items-center">
+                                <label class="col-sm-2 col-form-index fw-bold">제목</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" placeholder="제목을 입력하세요.">
+                                </div>
+                            </div>
+                            
+                            <div class="row mb-4 align-items-top">
+                                <label class="col-sm-2 col-form-index fw-bold mt-2">내용</label>
+                                <div class="col-sm-10">
+                                    <textarea class="form-control" rows="8" placeholder="내용을 입력하세요."></textarea>
+                                </div>
+                            </div>
+
+                            <div class="row mb-4 align-items-center">
+                                <label class="col-sm-2 col-form-index fw-bold">첨부파일</label>
+                                <div class="col-sm-10">
+                                    <div class="d-flex align-items-center gap-3 mb-2">
+                                        <button type="button" class="btn btn-primary btn-sm px-3">파일 선택</button>
+                                        <span class="text-muted small">선택된 파일 없음</span>
+                                    </div>
+                                    <div class="border rounded p-2 d-flex justify-content-between align-items-center bg-light" style="max-width: 400px;">
+                                        <span class="small text-secondary"><i class="bi bi-file-earmark-text me-2 text-primary"></i>보안정책변경.hwp</span>
+                                        <button type="button" class="btn-close btn-sm" aria-label="Close"></button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <hr class="my-4 text-muted opacity-25">
+
+                            <div class="d-flex justify-content-start gap-2">
+                                <button type="submit" class="btn btn-primary px-4">등록</button>
+                                <button type="button" class="btn btn-outline-secondary px-4" onclick="loadPage('list')">취소</button>
+                            </div>
+                        </form>
+                    </div>
+                `,
+
+                // [그림 3] 공지사항 상세 조회 화면
+                detail: `
+                    <div class="card-custom">
+                        <h5 class="fw-bold mb-4">[필독] 2025년 하반기 보안 정책 변경 안내</h5>
+                        
+                        <div class="table-responsive mb-4">
+                            <table class="table table-bordered align-middle text-center small text-secondary">
+                                <tbody>
+                                    <tr>
+                                        <td class="table-light fw-bold" style="width: 15%;">번호</td>
+                                        <td style="width: 35%;" class="text-start ps-3 text-dark">1</td>
+                                        <td class="table-light fw-bold" style="width: 15%;">조회수</td>
+                                        <td style="width: 35%;" class="text-start ps-3 text-dark">245</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="table-light fw-bold">작성자</td>
+                                        <td class="text-start ps-3 text-dark">정지우</td>
+                                        <td class="table-light fw-bold">등록일자</td>
+                                        <td class="text-start ps-3 text-dark">2025.06.10</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="table-light fw-bold">부서</td>
+                                        <td class="text-start ps-3 text-dark">보안운영팀</td>
+                                        <td class="table-light fw-bold">수정일자</td>
+                                        <td class="text-start ps-3 text-dark">2025.06.10</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="py-3 border-bottom mb-4" style="min-height: 200px; font-size: 14px; line-height: 1.8;">
+                            <p>2025년 하반기 사내 전체 보안 정책 안내 가이드입니다. 회사의 중요 자산을 보호하기 위해 외부 장치 사용 제한 및 리스크 관리가 아래와 같이 변경될 예정입니다.</p>
+                            <ul class="ps-3 text-secondary">
+                                <li>인증 서버 및 신규 계정 관리 방식 변경</li>
+                                <li>외부 디바이스 접근 제어 프로그램 전면 설치</li>
+                                <li>정기 보안 점검 공지 (매주 수요일)</li>
+                            </ul>
+                            <p class="mt-4 fw-bold">협조 바랍니다.</p>
+
+                            <div class="mt-5">
+                                <div class="border rounded p-2 d-inline-flex align-items-center bg-light" style="cursor:pointer; min-width: 250px;">
+                                    <i class="bi bi-file-earmark-text text-primary fs-5 me-2"></i>
+                                    <span class="small text-dark fw-medium me-4">보안정책변경.hwp</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="d-flex justify-content-end gap-2">
+                            <button class="btn btn-secondary px-4" onclick="loadPage('list')">목록</button>
+                            <button class="btn btn-primary px-4" onclick="loadPage('write')">수정</button>
+                            <button class="btn btn-danger px-4" onclick="if(confirm('삭제하시겠습니까?')) loadPage('list');">삭제</button>
+                        </div>
+                    </div>
+                `
+            };
+
+            // 페이지 동적 전환 함수
+            function loadPage(pageName) {
+                const container = document.getElementById('page-container');
+                if(Pages[pageName]) {
+                    container.innerHTML = Pages[pageName];
+                }
+            }
+
+            // 최초 렌더링 시 목록 로드
+            window.onload = function() {
+                loadPage('list');
+            };
+            </script>
+            </body>
+            </html>
+
+
+        <!--         화면 구성              -->
+        <!--         화면 구성              -->
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+

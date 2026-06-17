@@ -82,8 +82,8 @@ values
 -- | bfile      | varchar(500)  | YES  |     | NULL              |                                               |
 -- | created_at | datetime      | NO   |     | CURRENT_TIMESTAMP | DEFAULT_GENERATED                             |
 -- | updated_at | datetime      | NO   |     | CURRENT_TIMESTAMP | DEFAULT_GENERATED on update CURRENT_TIMESTAMP |
--- | emp_id     | int           | NO   | MUL | NULL              | => bwriter                                             |
--- | com_id     | int           | NO   | MUL | NULL              | => 회사ID                                          |
+-- | emp_id     | int           | NO   | MUL | NULL              | => bwriter                                    |
+-- | com_id     | int           | NO   | MUL | NULL              | => 회사ID                                      |
 -- +------------+---------------+------+-----+-------------------+-----------------------------------------------+
 -- 9 rows in set (0.00 sec)
 
@@ -104,3 +104,27 @@ VALUES
 -- |  16 | 인사관리 규정 개정   | 직급/재직 상태 관련 규정이 개정되었습니다.     |   34 | insa_rule.pdf | 2026-06-16 17:52:20 | 2026-06-16 17:52:20 |      2 |      1 |
 -- +-----+----------------------+------------------------------------------------+------+---------------+---------------------+---------------------+--------+--------+
 -- 2 rows in set (0.00 sec)
+
+-- -----------------------------------------------------------------------------
+-- -----------------------------------------------------------------------------
+
+-- >1. dto
+-- >2. mapper
+-- ```
+-- 1page
+-- 1) 페이징-select
+-- 2) 검색  -select
+
+-- 2page
+-- 3) 공지사항등록 - insert
+
+-- 3page
+-- 4) 상세페이지-select / update(조회수)
+
+-- 4page
+-- 5) 수정수정페이지-select / update(수정기능)
+-- ```
+
+-- >3. service
+-- >4. controller
+-- >5. view
