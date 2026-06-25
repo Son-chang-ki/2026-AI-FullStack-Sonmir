@@ -42,7 +42,7 @@
 		      	<!-- http://localhost:8080/board/list?pageNo=2 -->
 		      	<!--  22-10 / 12-10 / 2 -->
 		      	<!--  UtilPaging(listtotal=12, onepagelist=10, pagetotal=2, bottomlist=10, pstartno=1, current=1, 
-		      	       start=1        -->
+		      	       start=1  end=2)      -->
 			      <tr  th:each="dto , i : ${list}">
 			           <td th:text="${paging.listtotal - ((paging.current-1)* paging.onepagelist) - i.index}"></td>
 		           
