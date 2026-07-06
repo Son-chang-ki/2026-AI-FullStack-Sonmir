@@ -41,7 +41,7 @@ create table dept(
 
 select * from dept;
 
-insert into 이용해서 값 넣기        
+--insert into 이용해서 값 넣기        
         
 INSERT INTO dept (DEPTNO, DNAME, LOC ) values ( 10, 'ACCOUNTING',    'NEW YOR' );
 INSERT INTO dept (DEPTNO, DNAME, LOC ) values ( 20,  'RESEARCH', 'DALLAS' );
