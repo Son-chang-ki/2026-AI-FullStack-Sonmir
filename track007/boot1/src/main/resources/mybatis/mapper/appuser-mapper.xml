@@ -4,7 +4,7 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.the703.dao.AppUserDao">
 
-  <insert id="insertAppUser" parameterType="AppUserDto">
+  <insert id="insertAppUser" 										parameterType="AppUserDto">
     insert into appuser 
     (APP_USER_ID, EMAIL, PASSWORD , MBTI_TYPE_ID, CREATED_AT, UFILE, MOBILE, NICKNAME, PROVIDER, PROVIDER_ID )
     VALUES  ( appuser_seq.nextval,  #{email}, #{password}, #{mbtiTypeId}, SYSDATE, #{ufile},
@@ -26,16 +26,16 @@
 	AND ROWNUM = 1   <!-- 여러 건 중 첫 번째만 가져오기 -->
   </select>
   
-  <select id="findByEmail"   resultType="AppUserDto"   parameterType="AppUserDto" >
+  <select id="findByEmail"   resultType="AppUserDto"   				parameterType="AppUserDto" >
   	select * from    appuser   where    email = #{email}
   	AND ROWNUM = 1   <!-- 여러 건 중 첫 번째만 가져오기 -->
   </select>
   
-  <select id="iddoubleByEmail"   resultType="int"   parameterType="AppUserDto" >
+  <select id="iddoubleByEmail"   resultType="int"   				parameterType="AppUserDto" >
   	select count(*) from appuser where email = #{email}
   </select>
   
-  <update  id="updateAppUser" 	 parameterType="AppUserDto" >
+  <update  id="updateAppUser" 	 									parameterType="AppUserDto" >
    	update appuser
 	<set>
      <!--  <if test="password   != null">password=#{password},	 </if> -->
@@ -49,16 +49,16 @@
     where app_user_id =  #{appUserId}
   </update>
 
-  <delete  id="deleteAppUser"   parameterType="AppUserDto"> 
+  <delete  id="deleteAppUser"   									parameterType="AppUserDto"> 
      delete from appuser where app_user_id= #{appUserId} 
   </delete>
   
-  <insert id="insertAuth" parameterType="AuthDto">
+  <insert id="insertAuth" 											parameterType="AuthDto">
   	insert into authorities (auth_id, email, auth)
 	VALUES ( authorities_seq.nextval, #{email} , #{auth} )
   </insert>
   
-  <delete  id="deleteAuth"    parameterType="AuthDto"> 
+  <delete  id="deleteAuth"    										parameterType="AuthDto"> 
   	delete from authorities where email = #{email}
   </delete>
  
