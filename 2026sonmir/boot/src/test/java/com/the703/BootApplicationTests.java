@@ -13,52 +13,96 @@ import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.mock.web.MockMultipartFile;
 
 import com.the703.dao.Sboard2Dao;
 import com.the703.dao.TestDao;
 import com.the703.dto.Sboard2Dto;
+import com.the703.service.Sboard2Service;
 
 @SpringBootTest
 class BootApplicationTests {
 	
 	@Autowired TestDao  dao;
 	@Autowired Sboard2Dao  sboard2Dao;
+	@Autowired Sboard2Service  sboard2Service;
 	
-	/*              				*/
-	/*              				*/
-	/*              				*/
-	  @Test public void test05_delete() {   // 삭제
+	@Disabled  @Test public void test10_delete() { 
 		Sboard2Dto  dto = new Sboard2Dto();
-		dto.setId(42);
-		int result = sboard2Dao.delete(dto);
-		assertEquals(42,  result);
+		dto.setId(72); // 있는 ID
+		assertEquals(1,  sboard2Service.delete(dto) );
 	 }
 	
-	@Disabled  @Test public void test04_update() {   // 수정
+	@Disabled  @Test public void test09_update() { 
+		Sboard2Dto  dto = new Sboard2Dto();
+		dto.setAppUserId(1);   dto.setBtitle("title-new");   dto.setBcontent("content-new");
+		dto.setBpass("1111");  dto.setId(72);
+		
+		MockMultipartFile file = new MockMultipartFile("file", "test.txt", "test/plain", "data".getBytes() );
+		//import org.springframework.mock.web.MockMultipartFile;
+		
+		int result = sboard2Service.update(file, dto);		
+		assertEquals(1, result);
+	}
+	
+	@Disabled  @Test public void test08_detail() { 
+		Sboard2Dto  dto = new Sboard2Dto();
+		dto.setId(72);
+		assertEquals(72,  sboard2Service.detail(dto).getId() );
+	 }
+	
+	@Disabled  @Test public void test07_service_paging() { 
+		assertEquals(10, sboard2Service.list10(1).size() );
+		assertEquals(11, sboard2Service.selectCnt() );
+	
+	}
+	@Disabled  @Test public void test06_service_insert() { 
+		Sboard2Dto  dto = new Sboard2Dto();
+		dto.setAppUserId(1);   dto.setBtitle("title");   dto.setBcontent("content");
+		dto.setBpass("1111"); 
+		
+		MockMultipartFile file = new MockMultipartFile("file", "test.txt", "test/plain", "data".getBytes() );
+		//import org.springframework.mock.web.MockMultipartFile;
+		
+		int result = sboard2Service.insert(file, dto);		
+		assertEquals(1, result);
+	 }
+	
+	/*              				*/
+	/*              				*/
+	/*              				*/
+	@Disabled @Test public void test05_delete() {   // 삭제
+		Sboard2Dto  dto = new Sboard2Dto();
+		dto.setId(22);
+		int result = sboard2Dao.delete(dto);
+		assertEquals(22,  result);
+	 }
+	
+	 @Disabled  @Test public void test04_update() {   // 수정
 		Sboard2Dto  dto = new Sboard2Dto();
 		dto.setBtitle("title-new");  dto.setBcontent("content-new");
-		dto.setBfile("11.png");		 dto.setId(42);
+		dto.setBfile("11.png");		 dto.setId(41);
 	
 	 }
-	@Disabled   @Test public void test03_byId() {   // id, 조회수 올리기
+	  @Disabled  @Test public void test03_byId() {   // id, 조회수 올리기
 	  	 Sboard2Dto  dto = new Sboard2Dto();
-	  	 dto.setId(22);
+	  	 dto.setId(66);
 	  	 Sboard2Dto result = sboard2Dao.selectById(dto);
-	  	 assertEquals(22,  result.getId());
+	  	 assertEquals(66,  result.getId());
 	  }
 	
-	@Disabled  @Test public void test02_paging()  { // paging, 갯수
+	    @Disabled @Test public void test02_paging()  { // paging, 갯수
 		HashMap<String , Object> para = new HashMap<>();
 		para.put("start", 0);
 		para.put("end", 10);
 		List<Sboard2Dto>  list10 = sboard2Dao.selectPaging(para);
 		
-		assertEquals(4, list10.size());			  // 4 숫자는 지금 있는 list 의 갯수로 ( 예상되는 결과, 해당코드 )
+		assertEquals(10, list10.size());			  // 10 숫자는 지금 있는 list 의 갯수로 ( 예상되는 결과, 해당코드 )
 		assertNotNull(list10);
-		assertEquals(4, sboard2Dao.selectCnt());  // 전체 갯수 4개
+		assertEquals(12, sboard2Dao.selectCnt());  // 전체 갯수 12개
 	}
 	
-	@Disabled  @Test public void test01_Insert() throws UnknownHostException { // insert
+	@Disabled @Test public void test01_Insert() throws UnknownHostException { // insert
 		Sboard2Dto  dto = new Sboard2Dto();
 		dto.setAppUserId(1);   dto.setBtitle("title");   dto.setBcontent("content");
 		dto.setBpass("1111");  dto.setBfile("1.png");	 dto.setBip(InetAddress.getLocalHost().getHostAddress());
@@ -69,7 +113,7 @@ class BootApplicationTests {
 	}
 	
 	//@Ignore - JUnit4
-	@Disabled   //@Test
+	@Disabled //@Test
 	void contextLoads() {
 		System.out.println("....................");
 		System.out.println( dao.readTime());

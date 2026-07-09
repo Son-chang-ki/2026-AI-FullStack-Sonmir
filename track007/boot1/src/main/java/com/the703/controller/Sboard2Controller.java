@@ -42,7 +42,7 @@ public class Sboard2Controller {
 	
 	// 4. 상세보기		GET : /board/detail
 	@GetMapping("/detail") 	public String detail_get( Model model, Sboard2Dto dto) { 
-		model.addAttribute("dto", service.datail(dto));
+		model.addAttribute("dto", service.detail(dto));
 		return "board/detail"; 
 		}
 	
