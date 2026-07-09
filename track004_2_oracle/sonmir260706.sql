@@ -160,7 +160,7 @@ select * from sboard2;
 
 --1) crud
 --* insert
-* insert into  sboard2 ( ID ,  APP_USER_ID ,  BTITLE  ,  BCONTENT  ,  BPASS  ,  BFILE  ,  BIP  )
+insert into  sboard2 ( ID ,  APP_USER_ID ,  BTITLE  ,  BCONTENT  ,  BPASS  ,  BFILE  ,  BIP  )
   values ( sboard2_seq.nextval ,  1001    ,  'title'   , 'bcontent'  ,  '1111' ,  '1.png' ,  '127.0.0.1' );
 
 --* 전체select  ( 페이징 )
@@ -211,4 +211,32 @@ FROM sboard2;
 
 commit;
   
+insert into  sboard2 ( ID ,  APP_USER_ID ,  BTITLE  ,  BCONTENT  ,  BPASS  ,  BFILE  ,  BIP  )
+  values ( sboard2_seq.nextval ,  1002    ,  'title'   , 'bcontent'  ,  '1111' ,  '1.png' ,  '127.0.0.1' );
   
+insert into  sboard2 ( ID ,  APP_USER_ID ,  BTITLE  ,  BCONTENT  ,  BPASS  ,  BFILE  ,  BIP  )
+  values ( sboard2_seq.nextval ,  1003    ,  'title'   , 'bcontent'  ,  '1111' ,  '1.png' ,  '127.0.0.1' );  
+
+insert into  sboard2 ( ID ,  APP_USER_ID ,  BTITLE  ,  BCONTENT  ,  BPASS  ,  BFILE  ,  BIP  )
+  values ( sboard2_seq.nextval ,  1004    ,  'title'   , 'bcontent'  ,  '1111' ,  '1.png' ,  '127.0.0.1' );
+  
+  insert into  sboard2 ( ID ,  APP_USER_ID ,  BTITLE  ,  BCONTENT  ,  BPASS  ,  BFILE  ,  BIP  )
+  values ( sboard2_seq.nextval ,  1005    ,  'title'   , 'bcontent'  ,  '1111' ,  '1.png' ,  '127.0.0.1' );
+  
+  insert into  sboard2 ( ID ,  APP_USER_ID ,  BTITLE  ,  BCONTENT  ,  BPASS  ,  BFILE  ,  BIP  )
+  values ( sboard2_seq.nextval ,  1006    ,  'title'   , 'bcontent'  ,  '1111' ,  '1.png' ,  '127.0.0.1' );
+  
+  insert into  sboard2 ( ID ,  APP_USER_ID ,  BTITLE  ,  BCONTENT  ,  BPASS  ,  BFILE  ,  BIP  )
+  values ( sboard2_seq.nextval ,  1007    ,  'title'   , 'bcontent'  ,  '1111' ,  '1.png' ,  '127.0.0.1' );
+  
+  insert into  sboard2 ( ID ,  APP_USER_ID ,  BTITLE  ,  BCONTENT  ,  BPASS  ,  BFILE  ,  BIP  )
+  values ( sboard2_seq.nextval ,  1008    ,  'title'   , 'bcontent'  ,  '1111' ,  '1.png' ,  '127.0.0.1' );
+  
+  insert into  sboard2 ( ID ,  APP_USER_ID ,  BTITLE  ,  BCONTENT  ,  BPASS  ,  BFILE  ,  BIP  )
+  values ( sboard2_seq.nextval ,  1009    ,  'title'   , 'bcontent'  ,  '1111' ,  '1.png' ,  '127.0.0.1' );
+  
+  insert into  sboard2 ( ID ,  APP_USER_ID ,  BTITLE  ,  BCONTENT  ,  BPASS  ,  BFILE  ,  BIP  )
+  values ( sboard2_seq.nextval ,  1010    ,  'title'   , 'bcontent'  ,  '1111' ,  '1.png' ,  '127.0.0.1' );
+  
+  
+  select *  from  sboard2;
