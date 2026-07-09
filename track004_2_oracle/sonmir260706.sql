@@ -141,6 +141,9 @@ SQL> desc  sboard2;
  BIP                 VARCHAR2(255)      NOT NULL  ,
  CREATED_AT          DATE        default sysdate          
  );
+ 
+select * from sboard2; 
+ 
  desc sboard2;
  
  create sequence sboard2_seq;
@@ -187,18 +190,18 @@ select * from(
   
 
 * 해당번호의 select
-  select *  from  sboard2    where  id=1;
+  select *  from  sboard2    where  id=21;
   
 * 해당번호 조회수 올리기
-  update  sboard2   set   bhit = bhit + 1  where  id=1;
+  update  sboard2   set   bhit = bhit + 1  where  id=21;
 
 * 해당번호 업데이트
-  update  sboard2  set  btitle='new' , bcontent='new' , bfile='2.png'  where  id=1;
+  update  sboard2  set  btitle='new' , bcontent='new' , bfile='2.png'  where  id=21;
   
   select *  from  sboard2;
 
 * 해당번호 삭제
-  delete  from  sboard2   where  id=1;
+  delete  from  sboard2   where  id=21;
   
 select *  from  sboard2;
 
