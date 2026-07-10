@@ -6,7 +6,7 @@
 <!--    #1. layout 렌더링    -->
 <head lang="ko">
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title> SONMIR QUEST 글수정 </title>
 </head>
 
 <body>
@@ -14,46 +14,56 @@
  	
 		  <div class="container card  my-5 p-4">
 		     <h3 class="card-header"> SONMIR QUEST 글수정 </h3>
-		  <form th:action="@{/board/edit}"  method="post"  enctype="multipart/form-data"> 
+		     
+		     <!-- th:object를 사용하여 서버의 dto와 바인딩합니다 -->
+		  <form th:action="@{/board/edit}"  method="post"  enctype="multipart/form-data"  th:object="${dto}"> 
 		  
+		     <!--  <!-- 고유 ID 전송 -->
+             <input type="hidden" th:field="*{id}"> -->
+             
 		     <!--  <input type="hidden"   name="app_user_id"  value="">  -->
 		     <input type="hidden"   name="id"  th:value="${dto.id}">
 		     
+		     <!-- 제목 입력 -->
 			  <div class="mb-3 mt-3">
 			    <label for="title" class="form-label"> TITLE: </label>
 			    <input type="text" class="form-control" id="title" 
 			    	  placeholder="내용을 입력해주세요" name="btitle"  th:value="${dto.btitle}">
 			  </div>
 			  
+			  <!-- 비밀번호 입력 -->
 			  <div class="mb-3">
 			    <label for="pass" class="form-label"> PASS: </label>
 			    <input type="password" class="form-control" id="pass" 
 			    	placeholder="비밀번호를 입력해주세요" name="bpass">
 			  </div>
 			  
+			  <!-- 내용 입력 -->
 			  <div class="mb-3">
 			    <label for="content" class="form-label"> CONTENT: </label>
 			    <textarea class="form-control" id="content" placeholder="내용을 입력해주세요" 
 			     			name="bcontent"  th:text="${dto.bcontent}"></textarea>
-			  </div> 			  
-			  
+			  </div> 	
+			  		  
+			    <!-- 파일 업로드 -->
 			  <div class="mb-3  text-end">
 			  	<button type="submit" class="btn btn-primary"> FILE </button>
 			  	<input type="file" class="form-control" id="file" 
 			    	placeholder="비밀번호를 입력해주세요" name="file">
 			    	
-			    <input type="text" class="form-control"  th:value="${dto.bfile}"  name="bfile">	
+			    	<!-- 기존 파일명 표시 -->
+			    <input type="text" class="form-control mt-2"  th:value="${dto.bfile}"  name="bfile">	
 			  </div>
 			  
+			   <!-- 버튼 -->
 			  <div class="mb-3  text-end">
 			  	<button type="submit" class="btn btn-primary"> 글수정 </button>
 			  	<a href="javascript:history.go(-1)"  class="btn btn-danger"> BACK </a>
 			  </div>
 			  
 		 </form>
-		  </div>
+		 </div>
    
 </div>
 </body>
-
 </html>

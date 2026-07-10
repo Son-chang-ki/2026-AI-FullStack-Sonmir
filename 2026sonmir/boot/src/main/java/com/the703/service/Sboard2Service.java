@@ -18,12 +18,13 @@ public interface Sboard2Service {
 	public int insert (MultipartFile file, Sboard2Dto dto);
 	
 	//5. 수정폼
-	public Sboard2Dto		updateFom(Sboard2Dto dto);
+	public Sboard2Dto		updateForm(Sboard2Dto dto);
 	
 	//6. 수정기능 (이미지 올리기)
 	public int update (MultipartFile file, Sboard2Dto dto);
 	
 	//7. 삭제기능
 	public int				delete(Sboard2Dto dto);
+	
 
 }

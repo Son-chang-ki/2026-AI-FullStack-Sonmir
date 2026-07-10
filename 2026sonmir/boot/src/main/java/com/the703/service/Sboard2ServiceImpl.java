@@ -55,7 +55,11 @@ public class Sboard2ServiceImpl implements Sboard2Service{
 	}
 	
 	//5. 수정폼
-	@Override public Sboard2Dto updateFom(Sboard2Dto dto) {  return dao.selectById(dto); }
+	//	      public Sboard2Dto		updateForm(Sboard2Dto dto);
+	@Override public Sboard2Dto updateForm(Sboard2Dto dto) { // 비밀번호 검증 및 DB 수정(update) 로직이 들어가는 부분
+		System.out.println(".........  updateForm "  + dto);
+		return dao.selectById(dto); 
+	}
 	
 	//6. 수정기능 (이미지 올리기)
 	@Override public int update(MultipartFile file, Sboard2Dto dto) {

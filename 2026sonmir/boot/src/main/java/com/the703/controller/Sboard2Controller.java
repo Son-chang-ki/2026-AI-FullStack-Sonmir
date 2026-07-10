@@ -81,8 +81,6 @@ public class Sboard2Controller {
  - 경로
 
 2. controller (서비스 연결)
-
-
 /board/list.do            /view/board/list.jsp 
 /board/write.do           /view/board/write.jsp    (글쓰기폼)
 /board/detail.do          /view/board/detailjsp    (상세보기)

@@ -38,7 +38,7 @@
 		</update>
 		
 		<delete id="delete"  		parameterType="Sboard2Dto"> 
-			delete  from  sboard2   where  id = #{id} bpass = #{bpass}
+			delete  from  sboard2   where  id = #{id}  AND  bpass = #{bpass}
 		</delete>
 		
 	</mapper>
